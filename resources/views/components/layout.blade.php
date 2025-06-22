@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    {{-- Memuat asset yang dikompilasi oleh Vite (Tailwind CSS) --}}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
@@ -18,7 +18,7 @@
     {{-- ================================================================= --}}
     {{--                            HEADER SECTION                           --}}
     {{-- ================================================================= --}}
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-white shadow-sm sticky top-0 z-50 font-primary">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             
             {{-- Logo dari Gambar --}}
@@ -68,11 +68,11 @@
         {{ $slot }}
     </main>
 
-    <footer class="bg-white shadow-outer">
+    <footer class="bg-white shadow-outer font-primary">
             {{-- ================================================================= --}}
             {{--                         BAGIAN ATAS FOOTER                          --}}
             {{-- ================================================================= --}}
-            <div class="container mx-70 px-6 py-20">
+            <div class="container mx-20 px-6 py-20">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
                     {{-- Kolom 1: Butuh bantuan? --}}
@@ -161,6 +161,8 @@
                 </div>
             </div>
         </footer>
-
+    {{-- Definisikan slot bernama "scripts" di sini --}}
+    {{-- Semua script yang Anda kirim akan muncul di tempat ini --}}
+    <slot name="scripts"></slot>
 </body>
 </html>
