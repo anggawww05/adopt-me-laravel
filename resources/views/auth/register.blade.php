@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
+    @vite('resources/css/app.css')
 </head>
 <body>
-    <h2>Register</h2>
+    <h1 class="text-lg underline">
+      Hello world!
+    </h1>
     <form method="POST" action="{{ route('register.store') }}">
         @csrf
         <div>
@@ -16,7 +19,7 @@
         </div>
         <div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" class="text-white" required>
         </div>
         <div>
             <label for="password">Password</label>
