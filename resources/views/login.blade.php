@@ -1,5 +1,5 @@
 <x-layout title="Register">
-    <div class="h-screen bg-gray-200 flex items-center justify-center">
+    <div class="h-screen flex items-center justify-center" style="background-image: url('{{ asset('images/bg_auth.png') }}');">
         <div class="flex bg-white rounded-xl shadow-lg overflow-hidden w-[700px]">
             <!-- Left Side: Logo & Image -->
             <!-- Right Side: Register Form -->

@@ -1,150 +1,142 @@
 <x-layout title="Selamat Datang di Adopt Me!">
-    <div class="h-screen bg-gray-200 flex items-center justify-center">
-        <div class="relative w-full h-screen bg-cover bg-center">
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-opacity-50"
-                style="background-image: url('{{ asset('images/main_bg.png') }}');"></div>
+    @vite('resources/css/app.css')
+    <div class="relative w-full">
 
-            <!-- Content -->
-            <div class="absolute inset-0 flex items-center justify-center px-6">
-                <div class="max-w-xl text-white z-10">
-                    <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
-                        Satu pelukan<br><span class="text-white">selamatkan hidup.</span>
-                    </h1>
-                    <h2 class="text-4xl md:text-5xl font-bold mt-3 text-purple-600">Adopt <span
-                            class="text-pink-400">Me!</span></h2>
+        <img src="{{ asset('images/main_bg.png') }}" alt="Background" class="w-full h-auto" />
 
-                    <p class="mt-5 text-sm md:text-base text-gray-200">
-                        Adopt Me! adalah platform adopsi hewan yang menghubungkan hewan-hewan terlantar dengan calon
-                        pemilik penuh kasih.
-                        Melalui website ini, kamu bisa melihat profil hewan, membaca kisah mereka, dan memberikan mereka
-                        rumah baru yang hangat dan aman.
-                    </p>
+        <div class="absolute inset-0 flex items-center justify-start px-20">
+            <div class="max-w-xl text-white">
+                <h1 class="text-4xl md:text-5xl font-['Montserrat'] leading-tight drop-shadow-lg">
+                    Satu pelukan<br><span class="text-white">selamatkan hidup.</span>
+                </h1>
+                <h1 class="text-4xl md:text-7xl font-['Baloo_Bhai_2'] font-bold my-4 text-[#5E225E] drop-shadow-lg">
+                    Adopt <span class="text-[#D678D6]">Me!</span>
+                </h1>
 
-                    <!-- Buttons -->
-                    <div class="mt-6 flex gap-4">
-                        <button
-                            class="bg-purple-400 text-white px-5 py-2 rounded-md hover:bg-purple-500 transition">Adopt
-                            Sekarang</button>
-                        <button
-                            class="border border-purple-400 text-purple-400 px-5 py-2 rounded-md hover:bg-purple-100 transition">Rehome
-                            Sekarang</button>
-                    </div>
+                <p class="text-sm md:text-base text-white font-['Montserrat'] font-light drop-shadow-md">
+                    Adopt Me! adalah platform adopsi hewan yang
+                    <br>menghubungkan hewan-hewan terlantar dengan
+                    <br>calon pemilik penuh kasih. Melalui website ini,
+                    <br>kamu bisa melihat profil hewan, membaca kisah 
+                    <br>mereka, dan memberikan mereka rumah baru 
+                    <br>yang hangat dan aman.
+                </p>
+
+                <div class="mt-6 flex gap-4">
+                    <button class="bg-[#D678D6] text-white font-['Montserrat'] px-12 py-4 rounded-lg hover:bg-[#5E225E] transition">
+                        Adopt Sekarang
+                    </button>
+                    <button class="border border-[#D678D6] text-[#D678D6] font-['Montserrat'] px-12 py-4 rounded-md hover:bg-purple-100 transition">
+                        Rehome Sekarang
+                    </button>
                 </div>
             </div>
         </div>
-
     </div>
-    <section class="py-12 px-4 bg-white">
-        <h2 class="text-center text-2xl md:text-3xl font-semibold mb-10">
-            Lihatlah Beberapa Hewan Peliharaan Kami
-        </h2>
 
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
-            <!-- Card 1 -->
-            <div class="bg-white rounded-xl shadow-md border p-4 flex flex-col">
-                <img src="{{ asset('images/main_bg.png') }}" alt="Tukang Gigit Sendal"
-                    class="rounded-md mb-3 h-48 w-full object-cover">
-                <h3 class="text-lg font-semibold">Tukang Gigit Sendal</h3>
-                <p class="text-sm text-gray-500">📍 Bali, Tabanan</p>
+    <section class="py-8 px-20 bg-white">
+        <h1 class="text-center text-2xl md:text-3xl font-semibold mt-4 mb-10">Lihatlah Beberapa Hewan Peliharaan Kami</h1>
 
-                <div class="mt-3 text-sm space-y-1">
-                    <p><strong>Gender:</strong> <span class="text-purple-600">Jantan</span> &nbsp;
-                        <strong>Breed:</strong> <span class="text-purple-600">Gakko</span>
-                    </p>
-                    <p><strong>Umur:</strong> 7 bulan &nbsp;
-                        <strong>Ukuran:</strong> Kecil
-                    </p>
+        <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
+                <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
+                <div class="p-4 flex-1 flex flex-col">
+                    <div class="font-bold text-lg mb-1">Tukang Gigit Sendal</div>
+                    <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
+                    <div class="mb-2">
+                        <span class="font-semibold text-xs">Gender:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
+                        <span class="font-semibold text-xs ml-2">Breed:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="font-semibold text-xs">Umur:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">2 Tahun</span>
+                        <span class="font-semibold text-xs ml-2">Ukuran:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
+                    </div>
+                    <div class="text-xs text-gray-600 mb-4 flex-1">
+                        Tukang Gigit Sendal aktif dan penasaran, cocok dengan keluarga yang suka bermain dan penuh kasih sayang.
+                    </div>
+                    <a href="#" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
                 </div>
-
-                <p class="text-sm mt-3 text-gray-600 flex-grow">
-                    Tukang Gigit Sendal aktif dan penasaran, cocok untuk rumah yang siap bersenang-senang!
-                </p>
-
-                <button class="mt-4 border border-pink-400 text-pink-500 rounded-md py-1 hover:bg-pink-50 transition">
-                    More Info...
-                </button>
             </div>
 
-            <!-- Card 2 -->
-            <div class="bg-white rounded-xl shadow-md border p-4 flex flex-col">
-                <img src="{{ asset('images/main_bg.png') }}" alt="Browny"
-                    class="rounded-md mb-3 h-48 w-full object-cover">
-                <h3 class="text-lg font-semibold">Browny</h3>
-                <p class="text-sm text-gray-500">📍 Bali, Denpasar</p>
-
-                <div class="mt-3 text-sm space-y-1">
-                    <p><strong>Gender:</strong> <span class="text-purple-600">Betina</span> &nbsp;
-                        <strong>Breed:</strong> <span class="text-purple-600">Shippet</span>
-                    </p>
-                    <p><strong>Umur:</strong> 13 bulan &nbsp;
-                        <strong>Ukuran:</strong> Sedang
-                    </p>
+            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
+                <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=400&q=80" alt="Dog" class="h-40 w-full object-cover">
+                <div class="p-4 flex-1 flex flex-col">
+                    <div class="font-bold text-lg mb-1">Browny</div>
+                    <div class="text-xs text-gray-500 mb-2">Bali, Denpasar</div>
+                    <div class="mb-2">
+                        <span class="font-semibold text-xs">Gender:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Betina</span>
+                        <span class="font-semibold text-xs ml-2">Breed:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Sheped</span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="font-semibold text-xs">Umur:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E]text-white rounded px-2 py-0.5 text-xs ml-1">3 Tahun</span>
+                        <span class="font-semibold text-xs ml-2">Ukuran:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Besar</span>
+                    </div>
+                    <div class="text-xs text-gray-600 mb-4 flex-1">
+                        Browny ramah dengan anak-anak dan suka bermain di luar ruangan, sangat cocok jadi teman bermain yang setia.
+                    </div>
+                    <a href="#" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
                 </div>
-
-                <p class="text-sm mt-3 text-gray-600 flex-grow">
-                    Browny ramah dengan anak-anak dan suka bermain. Cocok sebagai sahabat setia keluarga.
-                </p>
-
-                <button class="mt-4 border border-pink-400 text-pink-500 rounded-md py-1 hover:bg-pink-50 transition">
-                    More Info...
-                </button>
             </div>
-
-            <!-- Card 3 -->
-            <div class="bg-white rounded-xl shadow-md border p-4 flex flex-col">
-                <img src="{{ asset('images/main_bg.png') }}" alt="Penyihir Oren"
-                    class="rounded-md mb-3 h-48 w-full object-cover">
-                <h3 class="text-lg font-semibold">Penyihir Oren</h3>
-                <p class="text-sm text-gray-500">📍 Bali, Tabanan</p>
-
-                <div class="mt-3 text-sm space-y-1">
-                    <p><strong>Gender:</strong> <span class="text-purple-600">Jantan</span> &nbsp;
-                        <strong>Breed:</strong> <span class="text-purple-600">Gakko</span>
-                    </p>
-                    <p><strong>Umur:</strong> 11 bulan &nbsp;
-                        <strong>Ukuran:</strong> Kecil
-                    </p>
+                
+            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
+                <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
+                <div class="p-4 flex-1 flex flex-col">
+                    <div class="font-bold text-lg mb-1">Penyihir Oren</div>
+                    <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
+                    <div class="mb-2">
+                        <span class="font-semibold text-xs">Gender:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
+                        <span class="font-semibold text-xs ml-2">Breed:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="font-semibold text-xs">Umur:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">1 Tahun</span>
+                        <span class="font-semibold text-xs ml-2">Ukuran:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
+                    </div>
+                    <div class="text-xs text-gray-600 mb-4 flex-1">
+                        Penyihir Oren suka tidur di sofa dan menghibur keluarga dengan tingkah lucu menggemaskan.
+                    </div>
+                    <a href="#" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
                 </div>
-
-                <p class="text-sm mt-3 text-gray-600 flex-grow">
-                    Kucing oren yang cerdas, penyihir kecil yang suka tidur di pangkuan.
-                </p>
-
-                <button class="mt-4 border border-pink-400 text-pink-500 rounded-md py-1 hover:bg-pink-50 transition">
-                    More Info...
-                </button>
             </div>
-
-            <!-- Card 4 -->
-            <div class="bg-white rounded-xl shadow-md border p-4 flex flex-col">
-                <img src="{{ asset('images/main_bg.png') }}" alt="JackJack"
-                    class="rounded-md mb-3 h-48 w-full object-cover">
-                <h3 class="text-lg font-semibold">JackJack</h3>
-                <p class="text-sm text-gray-500">📍 Bali, Tabanan</p>
-
-                <div class="mt-3 text-sm space-y-1">
-                    <p><strong>Gender:</strong> <span class="text-purple-600">Jantan</span> &nbsp;
-                        <strong>Breed:</strong> <span class="text-purple-600">Kampung</span>
-                    </p>
-                    <p><strong>Umur:</strong> 5 bulan &nbsp;
-                        <strong>Ukuran:</strong> Kecil
-                    </p>
+               
+            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
+                <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
+                <div class="p-4 flex-1 flex flex-col">
+                    <div class="font-bold text-lg mb-1">Tukang Gigit Sendal</div>
+                    <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
+                    <div class="mb-2">
+                        <span class="font-semibold text-xs">Gender:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
+                        <span class="font-semibold text-xs ml-2">Breed:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="font-semibold text-xs">Umur:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">2 Tahun</span>
+                        <span class="font-semibold text-xs ml-2">Ukuran:</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
+                    </div>
+                    <div class="text-xs text-gray-600 mb-4 flex-1">
+                        Tukang Gigit Sendal aktif dan penasaran, cocok dengan keluarga yang suka bermain dan penuh kasih sayang.
+                    </div>
+                    <a href="#" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
                 </div>
-
-                <p class="text-sm mt-3 text-gray-600 flex-grow">
-                    JackJack aktif dan penyayang. Sangat cocok sebagai sahabat anak-anak.
-                </p>
-
-                <button class="mt-4 border border-pink-400 text-pink-500 rounded-md py-1 hover:bg-pink-50 transition">
-                    More Info...
-                </button>
             </div>
         </div>
 
-        <!-- See More Button -->
-        <div class="mt-10 text-center">
-            <button class="border border-pink-300 text-pink-400 px-6 py-2 rounded-md hover:bg-pink-50 transition">
+        <div class="mt-15 text-center">
+            <button class="border border-[#D678D6] text-[#D678D6] px-28 py-4 rounded-md hover:bg-purple-50 transition">
                 See More...
             </button>
         </div>
@@ -153,24 +145,20 @@
     <section class="py-16 px-6 bg-white">
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10">
 
-            <!-- Left: Gambar dan Judul -->
             <div class="flex-1 text-center lg:text-left">
-                <h2 class="text-3xl font-bold leading-snug">
-                    Keharmonisan antara <br>
-                    <span class="text-pink-500">Manusia & Hewan</span>
-                </h2>
+                <h1 class="text-3xl font-bold leading-snug">
+                    Keharmonisan antara<br>
+                    <span class="text-[#D678D6]">Manusia & Hewan</span>
+                </h1>
                 <img src="{{ asset('images/keharmonisan.png') }}" alt="Manusia dan Hewan"
                     class="mx-auto lg:mx-0 mt-8 max-w-sm">
             </div>
 
-            <!-- Right: Box Info -->
             <div class="flex-1 space-y-6">
-
-                <!-- Card 1 -->
-                <div class="p-5 border rounded-xl shadow-sm bg-white flex items-start gap-4">
+                <div class="p-5 border border-gray-200 rounded-xl shadow-sm bg-white flex items-start gap-4">
                     <div class="text-pink-400 text-2xl">🐾</div>
                     <div>
-                        <h3 class="font-semibold text-lg text-gray-800">Saling Memberi dan Menerima Kasih Sayang</h3>
+                        <h1 class="font-semibold text-lg text-gray-800">Saling Memberi dan Menerima Kasih Sayang</h1>
                         <p class="text-gray-600 text-sm mt-1">
                             Hewan peliharaan memberikan cinta tanpa syarat, sementara manusia memberi perawatan, dan
                             rasa aman, dan perhatian.
@@ -178,11 +166,10 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="p-5 border rounded-xl shadow-sm bg-white flex items-start gap-4">
+                <div class="p-5 border border-gray-200 rounded-xl shadow-sm bg-white flex items-start gap-4">
                     <div class="text-purple-400 text-2xl">🐾</div>
                     <div>
-                        <h3 class="font-semibold text-lg text-gray-800">Kerja Sama dalam Kehidupan Sehari-hari</h3>
+                        <h1 class="font-semibold text-lg text-gray-800">Kerja Sama dalam Kehidupan Sehari-hari</h1>
                         <p class="text-gray-600 text-sm mt-1">
                             Manusia menyediakan kebutuhan dasar hewan, sedangkan hewan bisa menjadi teman, penjaga, atau
                             bahkan penyembuh stres secara alami.
@@ -190,11 +177,10 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="p-5 border rounded-xl shadow-sm bg-white flex items-start gap-4">
+                <div class="p-5 border border-gray-200 rounded-xl shadow-sm bg-white flex items-start gap-4">
                     <div class="text-blue-400 text-2xl">🌲</div>
                     <div>
-                        <h3 class="font-semibold text-lg text-gray-800">Keharmonisan Kehidupan dan Alam</h3>
+                        <h1 class="font-semibold text-lg text-gray-800">Keharmonisan Kehidupan dan Alam</h1>
                         <p class="text-gray-600 text-sm mt-1">
                             Keharmonisan muncul saat manusia menyadari bahwa hewan juga makhluk hidup yang layak
                             dihargai, dan dilindungi.
@@ -218,7 +204,7 @@
 
                 <!-- Garis putus-putus -->
                 <div
-                    class="hidden md:block absolute top-1/2 left-0 right-0 border-t-2 border-dashed border-purple-300 z-0">
+                    class="hidden md:block absolute top-1/2 left-0 right-0 border-t-2 border-dashed border-[#FDC8FD] z-0">
                 </div>
 
                 <!-- Step 1 -->
@@ -287,5 +273,4 @@
             </div>
         </div>
     </section>
-
 </x-layout>
