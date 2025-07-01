@@ -7,7 +7,7 @@ use App\Http\Controllers\AdoptionController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\AccountController;
 
 Route::get('/register', [RegisterController::class, 'view'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
@@ -25,3 +25,9 @@ Route::get('/faq-adopt', [FAQController::class, 'adopter_view'])->name('faqAdopt
 Route::get('/faq-rehome', [FAQController::class, 'rehomer_view'])->name('faqRehome.view');
 Route::get('/tentang-kami', [TentangKamiController::class, 'view'])->name('tentangKami.view');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/account', [AccountController::class, 'index'])->name('account');
+Route::put('/account/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
+Route::delete('/search-history/{id}', [AccountController::class, 'deleteSearchHistory'])
+    ->middleware('auth')
+    ->name('searchHistory.destroy');
