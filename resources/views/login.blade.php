@@ -4,7 +4,7 @@
             <!-- Left Side: Logo & Image -->
             <!-- Right Side: Register Form -->
             <div class="w-1/2 p-8">
-                <h1 class="text-lg font-bold mb-4 text-center">Buat akun anda!</h1>
+                <h1 class="text-lg font-bold mb-4 text-center">Masukkan akun anda!</h1>
                 <form method="POST" action="{{ route('login.authenticate') }}">
                     @csrf
                     <div class="mb-3">
@@ -26,7 +26,7 @@
                     <button type="submit" class="w-full bg-purple-700 text-white py-2 rounded hover:bg-purple-800 mb-3">Buat Akun</button>
                 </form>
                 <div class="text-center text-xs text-gray-500">
-                    Sudah punya akun? <a href="{{ route('register') }}" class="text-blue-500 underline">Login</a>
+                    Belum punya akun? <a href="{{ route('register') }}" class="text-blue-500 underline">Register</a>
                 </div>
             </div>
             <div class="flex flex-col items-center justify-center w-1/2 bg-gradient-to-b from-purple-100 to-white p-8">

@@ -7,7 +7,7 @@ use App\Http\Controllers\AdoptionController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\RehomerController;
 
 Route::get('/register', [RegisterController::class, 'view'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
@@ -18,6 +18,7 @@ Route::get('/adopt/post-adopt', [PostController::class, 'indexAdopt'])->name('ad
 Route::get('/', function () {return view('landing'); })->name('landing');
 Route::get('/adopsi/formulir', [AdoptionController::class, 'create'])->name('adoption.form');
 Route::post('/adopsi/formulir', [AdoptionController::class, 'store'])->name('adoption.store');
+Route::get('/rehomer/formulir', [RehomerController::class, 'view'])->name('rehomer.form');
 Route::get('/faq-adopt', [FAQController::class, 'adopter_view'])->name('faqAdopt.view');
 Route::get('/faq-rehome', [FAQController::class, 'rehomer_view'])->name('faqRehome.view');
 Route::get('/tentang-kami', [TentangKamiController::class, 'view'])->name('tentangKami.view');

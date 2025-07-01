@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Adopt Me!' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="font-[Montserrat] bg-gray-50 text-gray-800">
@@ -16,7 +17,7 @@
                 <li><a href="/" class="hover:text-[#5E225E] hover:underline transition">Home</a></li>
                 <li><a href="#" class="hover:text-[#5E225E] hover:underline transition">Adopt</a></li>
                 <li><a href="#" class="hover:text-[#5E225E] hover:underline transition">Rehome</a></li>
-                <li><a href="/tentang-kami" class="hover:text-[#5E225E] hover:underline transition transition duration-200">Tentang Kami</a></li>
+                <li><a href="/tentang-kami" class="hover:text-[#5E225E] hover:underline transition duration-200">Tentang Kami</a></li>
             </ul>
 
             <a href="/login" class="flex items-center space-x-2 bg-[#D678D6] text-white font-semibold rounded-lg hover:opacity-70 transition duration-200 px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-base">
@@ -34,9 +35,9 @@
                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                 </div>
-                <input 
-                    type="text" 
-                    placeholder="Pencarian..." 
+                <input
+                    type="text"
+                    placeholder="Pencarian..."
                     class="w-full py-4 pl-12 pr-4 text-gray-700 rounded-full"
                 >
             </div>
@@ -72,7 +73,7 @@
                                 </div>
                                 <p class="ml-3 text-sm lg:text-base text-[#5E225E]">Jl. Unud 1234, Bali, Indonesia</p>
                             </li>
-    
+
                             <li class="flex items-start">
                                 <div class="flex-shrink-0">
                                     <svg class="w-5 h-5 lg:w-6 lg:h-6 text-[#5E225E] mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
@@ -81,7 +82,7 @@
                                 </div>
                                 <p class="ml-3 text-sm lg:text-base text-[#5E225E]">+62 8123-456-789</p>
                             </li>
-                           
+
                             <li class="flex items-start">
                                 <div class="flex-shrink-0">
                                     <svg class="w-5 h-5 lg:w-6 lg:h-6 text-[#5E225E] mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
@@ -99,7 +100,7 @@
         <div class="bg-[#D678D6]">
             <div class="container mx-auto px-8 py-8">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                        
+
                     <p class="text-sm lg:text-base text-white mb-4 md:mb-0">
                         &copy; {{ date('Y') }} AdoptMe.com
                     </p>
