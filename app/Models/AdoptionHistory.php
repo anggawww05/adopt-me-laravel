@@ -28,10 +28,19 @@ class AdoptionHistory extends Model
         'describe_other_pets',
         'experience',
         'user_id',
+        'pet_id', 
+        'home_photo_1', // <-- Add this
+        'home_photo_2', // <-- Add this
+        'home_photo_3', // <-- Add this
+        'home_photo_4', // <-- Add this
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function pet()
+    {
+        return $this->belongsTo(Pet::class);
     }
 }

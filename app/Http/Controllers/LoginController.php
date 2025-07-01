@@ -36,4 +36,15 @@ class LoginController extends Controller
 
         return redirect()->back()->with('error', 'Data yang dimasukkan tidak sesuai/tidak terdaftar.');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Adopt Me!' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="font-[Montserrat] bg-gray-50 text-gray-800">
@@ -19,27 +20,50 @@
                 <li><a href="/tentang-kami" class="hover:text-[#5E225E] hover:underline transition duration-200">Tentang Kami</a></li>
             </ul>
 
-            <a href="/login" class="flex items-center space-x-2 bg-[#D678D6] text-white font-semibold rounded-lg hover:opacity-70 transition duration-200 px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-base">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 lg:h-6 lg:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span>Login | Sign Up</span>
-            </a>
+            @guest
+                {{-- If the user is a GUEST, show the Login button --}}
+                <a href="{{ route('login') }}" class="flex items-center space-x-2 bg-[#D678D6] text-white font-semibold rounded-lg hover:opacity-70 transition duration-200 px-4 py-2 lg:px-6 lg:py-3 text-sm lg:text-base">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 lg:h-6 lg:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span>Login | Sign Up</span>
+                </a>
+            @endguest
+
+            @auth
+                <div>
+                    {{-- If the user is LOGGED IN, show their profile picture and a logout link --}}
+                    <div class="flex items-center space-x-4 border border-purple-300 rounded-lg px-4 py-2">
+                        <img src="{{ Auth::user()->picture_profile ? asset('storage/' . Auth::user()->picture_profile) : asset('images/default_profile.jpg') }}" alt="Profile Picture" class="h-12 w-12 rounded-full object-cover border-2 border-purple-300">
+                        <span class="text-sm font-semibold text-gray-700">{{ Auth::user()->name }}</span>
+                    </div>
+                    {{-- Untuk sementara logout disini --}}
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="text-sm text-gray-500 hover:text-purple-700 hover:underline">Logout</button>
+                    </form>
+                </div>
+
+            @endauth
         </nav>
     </header>
 
     <div class="bg-[#D678D6]">
         <div class="container mx-auto px-6 py-5 ">
-            <div class="relative max-w-2xl mx-auto bg-white rounded-full shadow-lg">
-                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            <form action="{{ route('adopt.post') }}" method="GET">
+                <div class="relative max-w-2xl mx-auto bg-white rounded-full shadow-lg">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </div>
+                    <input 
+                        type="text" 
+                        name="q"
+                        placeholder="Cari nama, ras, atau deskripsi..." 
+                        class="w-full py-4 pl-12 pr-4 text-gray-700 rounded-full border-none focus:ring-2 focus:ring-purple-300"
+                        value="{{ request('q') }}"
+                    >
                 </div>
-                <input 
-                    type="text" 
-                    placeholder="Pencarian..." 
-                    class="w-full py-4 pl-12 pr-4 text-gray-700 rounded-full"
-                >
-            </div>
+            </form>
         </div>
     </div>
 
@@ -54,7 +78,7 @@
                     <div>
                         <h1 class="text-base lg:text-lg font-semibold text-gray-800 mb-4">Butuh bantuan?</h1>
                         <ul class="space-y-3">
-                            <li><a href="#" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Adopt a pet</a></li>
+                            <li><a href="/adopsi/formulir" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Adopt a pet</a></li>
                             <li><a href="#" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Rehome a pet</a></li>
                             <li><a href="/faq-adopt" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Adopt FAQ's</a></li>
                             <li><a href="/faq-rehome" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Rehome FAQ's</a></li>

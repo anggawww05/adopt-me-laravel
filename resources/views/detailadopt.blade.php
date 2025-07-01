@@ -1,156 +1,77 @@
-<x-layout title="Detail Adopsi Kucing - Adopt Me!">
+<x-layout :title="'Detail Adopsi: ' . $pet->name">
     <div class="min-h-screen bg-gray-100 flex items-center justify-center py-10">
-        <div class="bg-white shadow-lg w-[1300px] h-full rounded-2xl p-8">
+        <div class="bg-white shadow-lg w-full max-w-6xl rounded-2xl p-8">
+            
             <h1 class="text-2xl font-bold text-gray-800">Halo Majikan!</h1>
-            <div class="flex gap-2 mt-4">
+            <div class="flex gap-4 mt-4">
                 <div>
-                    <img src="{{ asset('images/main_bg.png') }}" alt="" class="w-10 h-10 rounded-full shadow-md">
+                    {{-- This now correctly shows the pet's picture --}}
+                    <img src="{{ asset($pet->piture) }}" alt="{{ $pet->name }}" class="w-12 h-12 rounded-full shadow-md object-cover" onerror="this.onerror=null;this.src='{{ asset('images/default_profile.png') }}';">
                 </div>
                 <div>
-                    <p class="text-gray-500 text-[12px]">Penyihir Oren</p>
-                    <p class="font-semibold text-[12px]">Pet id 08292829</p>
+                    <p class="text-gray-600 text-sm font-semibold">{{ $pet->name }}</p>
+                    <p class="font-medium text-sm text-gray-500">Pet ID {{ $pet->id }}</p>
                 </div>
             </div>
             <div class="mt-2">
-                <p class="text-gray-500 text-[12px]">Jawa Barat</p>
-                <p class="text-gray-500 text-[12px]">Jalan tung tung sahur no x</p>
+                <p class="text-gray-500 text-sm">{{ $pet->city }}</p>
+                <p class="text-gray-500 text-sm">{{ $pet->address }}</p>
             </div>
-            <div class="flex gap-4 mt-4">
-                <div>
+
+            <div class="flex flex-col md:flex-row gap-8 mt-6">
+                <div class="w-full md:w-2/3">
                     <div>
-                        <img src="{{ asset('images/main_bg.png') }}" alt=""
-                            class="w-[800px] h-[400px] rounded-lg shadow-md">
+                        {{-- Main Image --}}
+                        <img src="{{ asset($pet->piture) }}" alt="{{ $pet->name }}" class="w-full h-96 rounded-lg shadow-md object-cover" onerror="this.onerror=null;this.src='https://placehold.co/800x600/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia';">
                     </div>
+                    {{-- Thumbnails --}}
                     <div class="flex gap-3 mt-4">
-                        <img src="{{ asset('images/main_bg.png') }}" alt=""
-                            class="w-[190px] h-[120px] rounded-lg shadow-md">
-                        <img src="{{ asset('images/main_bg.png') }}" alt=""
-                            class="w-[190px] h-[120px] rounded-lg shadow-md">
-                        <img src="{{ asset('images/main_bg.png') }}" alt=""
-                            class="w-[190px] h-[120px] rounded-lg shadow-md">
-                        <img src="{{ asset('images/main_bg.png') }}" alt=""
-                            class="w-[190px] h-[120px] rounded-lg shadow-md">
+                        {{-- NOTE: These all use the same image because the database only has one picture field. --}}
+                        <img src="{{ asset($pet->piture) }}" alt="Thumbnail 1" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
+                        <img src="{{ asset($pet->piture) }}" alt="Thumbnail 2" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
+                        <img src="{{ asset($pet->piture) }}" alt="Thumbnail 3" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
+                        <img src="{{ asset($pet->piture) }}" alt="Thumbnail 4" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
                     </div>
                 </div>
-                <div class="flex flex-col gap-4">
-                    <div class="bg-[#F6F6F6] border border-gray-200 shadow-md rounded-lg p-4 w-[380px]">
-                        <h1 class="mt-4">Deskripsi</h1>
-                        <p class="text-justify my-4">Halo, namaku Penyihir Oren. Aku lahir di gang kecil yang sempit dan
-                            dingin, tapi nasib baik membawaku ke tangan manusia baik yang menyelamatkanku saat aku masih
-                            kecil dan lemah. Mereka merawatku, memberiku....</p>
-                    </div>
-                    <div class="ml-4 flex flex-col gap-2">
-                        <h1 class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"
-                                    fill="#A7F3D0" />
-                                <path stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" d="M9 12l2 2 4-4" />
-                            </svg>
-                            Bisa tinggal dengan anak
-                        </h1>
-                        <h1 class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"
-                                    fill="#A7F3D0" />
-                                <path stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" d="M9 12l2 2 4-4" />
-                            </svg>
-                            Divaksin
-                        </h1>
-                        <h1 class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"
-                                    fill="#A7F3D0" />
-                                <path stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" d="M9 12l2 2 4-4" />
-                            </svg>
-                            Terlatih
-                        </h1>
-                        <h1 class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"
-                                    fill="#A7F3D0" />
-                                <path stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" d="M9 12l2 2 4-4" />
-                            </svg>
-                            Steril
-                        </h1>
-                        <h1 class="flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"
-                                    fill="#A7F3D0" />
-                                <path stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" d="M9 12l2 2 4-4" />
-                            </svg>
-                            Foto terbaru
-                        </h1>
 
+                <div class="w-full md:w-1/3 flex flex-col gap-6">
+                    <div class="bg-gray-50 border border-gray-200 shadow-sm rounded-lg p-4">
+                        <h2 class="text-lg font-semibold border-b pb-2">Deskripsi</h2>
+                        <p class="text-justify my-4 text-gray-700">{{ $pet->description }}</p>
+                    </div>
+                    <div class="flex flex-col gap-2 pl-4">
+                        @if($pet->good_with_kids == 'yes')
+                        <p class="flex items-center gap-2 font-medium text-gray-700"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Bisa tinggal dengan anak</p>
+                        @endif
+                        @if($pet->vaccination_status == 'yes')
+                        <p class="flex items-center gap-2 font-medium text-gray-700"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Divaksin</p>
+                        @endif
+                        @if($pet->trained_status == 'yes')
+                        <p class="flex items-center gap-2 font-medium text-gray-700"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Terlatih</p>
+                        @endif
+                        @if($pet->steril_status == 'yes')
+                        <p class="flex items-center gap-2 font-medium text-gray-700"><svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Steril</p>
+                        @endif
                     </div>
                 </div>
             </div>
-            <div class="mt-4 flex">
-                <div class="flex gap-4 bg-white">
-                    <!-- Item -->
-                    <div class="flex flex-col items-center w-24 p-3 bg-gray-50 rounded-xl shadow-sm">
-                        <div class="text-pink-400 text-2xl mb-1">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="text-xs text-gray-500">Gender</div>
-                        <div class="text-sm font-semibold text-pink-500">Jantan</div>
-                    </div>
 
-                    <div class="flex flex-col items-center w-24 p-3 bg-gray-50 rounded-xl shadow-sm">
-                        <div class="text-pink-400 text-2xl mb-1">
-                            <i class="fas fa-paw"></i>
-                        </div>
-                        <div class="text-xs text-gray-500">Breed</div>
-                        <div class="text-sm font-semibold text-pink-500">Calico</div>
-                    </div>
-
-                    <div class="flex flex-col items-center w-24 p-3 bg-gray-50 rounded-xl shadow-sm">
-                        <div class="text-pink-400 text-2xl mb-1">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="text-xs text-gray-500">Umur</div>
-                        <div class="text-sm font-semibold text-pink-500">1 Tahun</div>
-                    </div>
-
-                    <div class="flex flex-col items-center w-24 p-3 bg-gray-50 rounded-xl shadow-sm">
-                        <div class="text-pink-400 text-2xl mb-1">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <div class="text-xs text-gray-500">Warna</div>
-                        <div class="text-sm font-semibold text-pink-500">Oranye</div>
-                    </div>
-
-                    <div class="flex flex-col items-center w-24 p-3 bg-gray-50 rounded-xl shadow-sm">
-                        <div class="text-pink-400 text-2xl mb-1">
-                            <i class="fas fa-weight"></i>
-                        </div>
-                        <div class="text-xs text-gray-500">Berat</div>
-                        <div class="text-sm font-semibold text-pink-500">3 kg</div>
-                    </div>
-
-                    <div class="flex flex-col items-center w-24 p-3 bg-gray-50 rounded-xl shadow-sm">
-                        <div class="text-pink-400 text-2xl mb-1">
-                            <i class="fas fa-ruler-vertical"></i>
-                        </div>
-                        <div class="text-xs text-gray-500">Tinggi</div>
-                        <div class="text-sm font-semibold text-pink-500">45 cm</div>
-                    </div>
+            <div class="mt-8 flex flex-col md:flex-row gap-8 items-center">
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Gender</div><div class="text-sm font-semibold text-purple-600">{{ ucfirst($pet->gender) }}</div></div>
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Breed</div><div class="text-sm font-semibold text-purple-600">{{ $pet->breed }}</div></div>
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Umur</div><div class="text-sm font-semibold text-purple-600">{{ $pet->age }} bulan</div></div>
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Warna</div><div class="text-sm font-semibold text-purple-600">{{ $pet->color }}</div></div>
+                    {{-- Note: Weight and Height are not in the database, using placeholders. --}}
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Berat</div><div class="text-sm font-semibold text-purple-600">-</div></div>
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Tinggi</div><div class="text-sm font-semibold text-purple-600">-</div></div>
                 </div>
                 <div class="flex-1 flex justify-end">
-                    <div class="border-1 border-indigo-300 rounded-xl p-2 bg-white shadow-md flex flex-col items-center justify-center w-[400px]">
+                    <div class="border rounded-xl p-6 bg-white shadow-md flex flex-col items-center justify-center w-full md:w-96">
                         <p class="text-gray-700 mb-4 text-center">Apakah anda tertarik untuk adopsi?</p>
-                        <button class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg shadow transition duration-200">
+                        <a href="{{ route('adoption.form', $pet) }}" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-8 rounded-lg shadow transition duration-200">
                             Adopsi Sekarang!
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
