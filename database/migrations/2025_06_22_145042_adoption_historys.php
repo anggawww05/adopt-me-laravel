@@ -32,6 +32,7 @@ return new class extends Migration
             $table->text('describe_other_pets');
             $table->text('experience');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('pet_id')->constrained('pets')->onDelete('cascade');
             $table->timestamps();
         });
     }

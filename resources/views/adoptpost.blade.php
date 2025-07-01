@@ -1,210 +1,87 @@
-<x-layout title="Detail Adopsi Kucing - Adopt Me!">
-    <div class="min-h-screen bg-gray-100 flex items-center justify-center py-10">
-        <div class="mx-9 w-screen flex grid-cols-1 md:grid-cols-3 gap-8">
+<x-layout title="Adopsi Hewan - Adopt Me!">
+    <div class="min-h-screen bg-gray-100 py-10">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
+            
             <!-- Filter Sidebar -->
-            <div class="bg-white rounded-xl p-8">
-                <div class="flex items-center justify-between mb-4">
-                    <h1 class="text-[16px] text-purple-500 font-semibold cursor-pointer">Filter Adopsi</h1>
-                </div>
-                <div class="mb-3">
-                    <select class="w-full border rounded-lg px-3 py-2 text-sm">
-                        <option>Jenis</option>
-                        <option>Kucing</option>
-                        <option>Anjing</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    {{-- <label class="block text-xs font-semibold mb-1">Lokasi</label> --}}
-                    <input type="text" class="w-full border rounded-lg px-3 py-2 text-sm" placeholder="Cty/Zip">
-                    <input type="text" class="w-full border rounded-lg px-3 py-2 text-sm mt-2" placeholder="Jl. Bombardir/Crocodile No.1">
-                </div>
-                <div class="mb-3">
-                    <select class="w-full border rounded-lg px-3 py-2 text-sm">
-                        <option>Ukuran</option>
-                        <option>Kecil</option>
-                        <option>Sedang</option>
-                        <option>Besar</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <select class="w-full border rounded-lg px-3 py-2 text-sm">
-                        <option>Gender</option>
-                        <option>Jantan</option>
-                        <option>Betina</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <select class="w-full border rounded-lg px-3 py-2 text-sm">
-                        <option>Umur</option>
-                        <option>&lt; 1 Tahun</option>
-                        <option>1-3 Tahun</option>
-                        <option>&gt; 3 Tahun</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <select class="w-full border rounded-lg px-3 py-2 text-sm">
-                        <option>Keturunan</option>
-                        <option>Persia</option>
-                        <option>Anggora</option>
-                        <option>Kampung</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <select class="w-full border rounded-lg px-3 py-2 text-sm">
-                        <option>Warna</option>
-                        <option>Oren</option>
-                        <option>Hitam</option>
-                        <option>Putih</option>
-                    </select>
-                </div>
-                <button class="w-full bg-purple-100 text-purple-500 font-semibold py-2 rounded-lg mt-2 hover:bg-purple-200 transition">Terapkan Filter</button>
+            <div class="md:col-span-1 bg-white rounded-xl shadow-sm p-6 h-fit">
+                <h2 class="text-lg text-purple-600 font-semibold mb-4">Filter Adopsi</h2>
+                
+                <form action="{{ route('adopt.post') }}" method="GET">
+                    <!-- Filter by Species -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Jenis</label>
+                        <select name="species" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-purple-500 focus:border-purple-500">
+                            <option value="">Semua Jenis</option>
+                            <option value="dog" {{ request('species') == 'dog' ? 'selected' : '' }}>Anjing</option>
+                            <option value="cat" {{ request('species') == 'cat' ? 'selected' : '' }}>Kucing</option>
+                        </select>
+                    </div>
+
+                    <!-- Filter by Location -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label>
+                        <input type="text" name="city" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-purple-500 focus:border-purple-500" placeholder="Contoh: Denpasar" value="{{ request('city') }}">
+                    </div>
+
+                    <!-- Filter by Gender -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                        <select name="gender" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-purple-500 focus:border-purple-500">
+                            <option value="">Semua Gender</option>
+                            <option value="male" {{ request('gender') == 'male' ? 'selected' : '' }}>Jantan</option>
+                            <option value="female" {{ request('gender') == 'female' ? 'selected' : '' }}>Betina</option>
+                        </select>
+                    </div>
+
+                    <!-- Filter by Age -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Umur</label>
+                        <select name="age" class="w-full border rounded-lg px-3 py-2 text-sm focus:ring-purple-500 focus:border-purple-500">
+                            <option value="">Semua Umur</option>
+                            <option value="lt1" {{ request('age') == 'lt1' ? 'selected' : '' }}>< 1 Tahun</option>
+                            <option value="1to3" {{ request('age') == '1to3' ? 'selected' : '' }}>1-3 Tahun</option>
+                            <option value="gt3" {{ request('age') == 'gt3' ? 'selected' : '' }}>> 3 Tahun</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full bg-purple-600 text-white font-semibold py-2 rounded-lg mt-2 hover:bg-purple-700 transition">Terapkan Filter</button>
+                    <a href="{{ route('adopt.post') }}" class="w-full block text-center text-gray-600 mt-2 text-sm hover:underline">Hapus Filter</a>
+                </form>
             </div>
+
             <!-- Pet Cards -->
-            <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
-                    <div class="p-4 flex-1 flex flex-col">
-                        <div class="font-bold text-lg mb-1">Tukang Gigit Sendal</div>
-                        <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Gender:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
-                            <span class="font-semibold text-xs ml-2">Breed:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
-                        </div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Umur:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">2 Tahun</span>
-                            <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
-                        </div>
-                        <div class="text-xs text-gray-600 mb-4 flex-1">
-                            Tukang Gigit Sendal aktif dan penasaran, cocok dengan keluarga yang suka bermain dan penuh kasih sayang.
-                        </div>
-                        <a href="#" class="block text-center border border-purple-300 text-purple-500 rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
+            <div class="md:col-span-3">
+                @if($pets->count())
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        @foreach ($pets as $pet)
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col transform hover:-translate-y-1 transition-transform duration-300">
+                                <img src="{{ asset($pet->piture) }}" alt="{{ $pet->name }}" class="h-48 w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia';">
+                                <div class="p-4 flex-1 flex flex-col">
+                                    <h3 class="font-bold text-lg mb-1 text-gray-800">{{ $pet->name }}</h3>
+                                    <div class="text-xs text-gray-500 mb-2">{{ $pet->city }}</div>
+                                    <div class="mb-3">
+                                        <span class="inline-block bg-purple-100 text-purple-600 rounded-full px-3 py-1 text-xs font-semibold mr-2">{{ ucfirst($pet->gender) }}</span>
+                                        <span class="inline-block bg-purple-100 text-purple-600 rounded-full px-3 py-1 text-xs font-semibold">{{ $pet->breed }}</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-4 flex-1">
+                                        {{ Str::limit($pet->description, 100) }}
+                                    </p>
+                                    <a href="{{ route('adopt.detail', $pet) }}" class="block text-center border border-purple-300 text-purple-600 rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition mt-auto">More Info...</a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                    <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=400&q=80" alt="Dog" class="h-40 w-full object-cover">
-                    <div class="p-4 flex-1 flex flex-col">
-                        <div class="font-bold text-lg mb-1">Browny</div>
-                        <div class="text-xs text-gray-500 mb-2">Bali, Denpasar</div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Gender:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Betina</span>
-                            <span class="font-semibold text-xs ml-2">Breed:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Sheped</span>
-                        </div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Umur:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">3 Tahun</span>
-                            <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Besar</span>
-                        </div>
-                        <div class="text-xs text-gray-600 mb-4 flex-1">
-                            Browny ramah dengan anak-anak dan suka bermain di luar ruangan, sangat cocok jadi teman bermain yang setia.
-                        </div>
-                        <a href="#" class="block text-center border border-purple-300 text-purple-500 rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
+                    <!-- Pagination Links -->
+                    <div class="mt-8">
+                        {{ $pets->links() }}
                     </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                    <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
-                    <div class="p-4 flex-1 flex flex-col">
-                        <div class="font-bold text-lg mb-1">Penyihir Oren</div>
-                        <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Gender:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
-                            <span class="font-semibold text-xs ml-2">Breed:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
-                        </div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Umur:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">1 Tahun</span>
-                            <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
-                        </div>
-                        <div class="text-xs text-gray-600 mb-4 flex-1">
-                            Penyihir Oren suka tidur di sofa dan menghibur keluarga dengan tingkah lucu menggemaskan.
-                        </div>
-                        <a href="#" class="block text-center border border-purple-300 text-purple-500 rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
+                @else
+                    <div class="bg-white rounded-xl shadow-md p-8 text-center">
+                        <h3 class="text-xl font-semibold text-gray-700">Tidak Ada Hasil</h3>
+                        <p class="text-gray-500 mt-2">Maaf, tidak ada hewan peliharaan yang cocok dengan kriteria pencarian Anda.</p>
+                        <a href="{{ route('adopt.post') }}" class="inline-block mt-4 bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-purple-700 transition">Lihat Semua Hewan</a>
                     </div>
-                </div>
-                <!-- Card 4 (repeat for demo) -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
-                    <div class="p-4 flex-1 flex flex-col">
-                        <div class="font-bold text-lg mb-1">Tukang Gigit Sendal</div>
-                        <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Gender:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
-                            <span class="font-semibold text-xs ml-2">Breed:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
-                        </div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Umur:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">2 Tahun</span>
-                            <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
-                        </div>
-                        <div class="text-xs text-gray-600 mb-4 flex-1">
-                            Tukang Gigit Sendal aktif dan penasaran, cocok dengan keluarga yang suka bermain dan penuh kasih sayang.
-                        </div>
-                        <a href="#" class="block text-center border border-purple-300 text-purple-500 rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
-                    </div>
-                </div>
-                <!-- Card 5 (repeat for demo) -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                    <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=400&q=80" alt="Dog" class="h-40 w-full object-cover">
-                    <div class="p-4 flex-1 flex flex-col">
-                        <div class="font-bold text-lg mb-1">Browny</div>
-                        <div class="text-xs text-gray-500 mb-2">Bali, Denpasar</div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Gender:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Betina</span>
-                            <span class="font-semibold text-xs ml-2">Breed:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Sheped</span>
-                        </div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Umur:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">3 Tahun</span>
-                            <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Besar</span>
-                        </div>
-                        <div class="text-xs text-gray-600 mb-4 flex-1">
-                            Browny ramah dengan anak-anak dan suka bermain di luar ruangan, sangat cocok jadi teman bermain yang setia.
-                        </div>
-                        <a href="#" class="block text-center border border-purple-300 text-purple-500 rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
-                    </div>
-                </div>
-                <!-- Card 6 (repeat for demo) -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                    <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
-                    <div class="p-4 flex-1 flex flex-col">
-                        <div class="font-bold text-lg mb-1">Penyihir Oren</div>
-                        <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Gender:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
-                            <span class="font-semibold text-xs ml-2">Breed:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
-                        </div>
-                        <div class="mb-2">
-                            <span class="font-semibold text-xs">Umur:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">1 Tahun</span>
-                            <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                            <span class="inline-block bg-purple-100 text-purple-500 rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
-                        </div>
-                        <div class="text-xs text-gray-600 mb-4 flex-1">
-                            Penyihir Oren suka tidur di sofa dan menghibur keluarga dengan tingkah lucu menggemaskan.
-                        </div>
-                        <a href="#" class="block text-center border border-purple-300 text-purple-500 rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>
