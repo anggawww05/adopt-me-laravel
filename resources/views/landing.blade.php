@@ -23,12 +23,18 @@
                 </p>
 
                 <div class="mt-6 flex gap-4">
-                    <button class="bg-[#D678D6] text-white font-['Montserrat'] px-12 py-4 rounded-lg hover:bg-[#5E225E] transition">
-                        Adopt Sekarang
-                    </button>
-                    <button class="border border-[#D678D6] text-[#D678D6] font-['Montserrat'] px-12 py-4 rounded-md hover:bg-purple-100 transition">
-                        Rehome Sekarang
-                    </button>
+                    <a href="/adopt/post-adopt">
+                        <button class="bg-[#D678D6] text-white font-['Montserrat'] px-12 py-4 rounded-lg hover:bg-[#5E225E] transition">
+                            Adopt Sekarang
+                        </button>
+                    </a>
+                    <a href="/rehomer/formulir">
+                        <button class="border border-[#D678D6] text-[#D678D6] font-['Montserrat'] px-12 py-4 rounded-md hover:bg-purple-100 transition">
+                            Rehome Sekarang
+                        </button>
+                    </a>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -38,101 +44,31 @@
         <h1 class="text-center text-2xl md:text-3xl font-semibold mt-4 mb-10">Lihatlah Beberapa Hewan Peliharaan Kami</h1>
 
         <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
+            @foreach ($pets as $pet)
+            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col w-lg:1/4">
+                <img src="{{ asset('storage/' . $pet->picture1) }}" alt="{{ $pet->name }}" class="h-40 w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia';">
                 <div class="p-4 flex-1 flex flex-col">
-                    <div class="font-bold text-lg mb-1">Tukang Gigit Sendal</div>
-                    <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
+                    <div class="font-bold text-lg mb-1">{{ $pet->name }}</div>
+                    <div class="text-xs text-gray-500 mb-2">{{ $pet->city }}</div>
                     <div class="mb-2">
                         <span class="font-semibold text-xs">Gender:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">{{ $pet->gender }}</span>
                         <span class="font-semibold text-xs ml-2">Breed:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">{{ $pet->breed }}</span>
                     </div>
                     <div class="mb-2">
                         <span class="font-semibold text-xs">Umur:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">2 Tahun</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">{{ $pet->age }} Tahun</span>
                         <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
+                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">{{ $pet->size }}</span>
                     </div>
                     <div class="text-xs text-gray-600 mb-4 flex-1">
                         Tukang Gigit Sendal aktif dan penasaran, cocok dengan keluarga yang suka bermain dan penuh kasih sayang.
                     </div>
-                    <a href="#" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
+                    <a href="{{ route('adopt.detail', $pet) }}" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
                 </div>
             </div>
-
-            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=400&q=80" alt="Dog" class="h-40 w-full object-cover">
-                <div class="p-4 flex-1 flex flex-col">
-                    <div class="font-bold text-lg mb-1">Browny</div>
-                    <div class="text-xs text-gray-500 mb-2">Bali, Denpasar</div>
-                    <div class="mb-2">
-                        <span class="font-semibold text-xs">Gender:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Betina</span>
-                        <span class="font-semibold text-xs ml-2">Breed:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Sheped</span>
-                    </div>
-                    <div class="mb-2">
-                        <span class="font-semibold text-xs">Umur:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E]text-white rounded px-2 py-0.5 text-xs ml-1">3 Tahun</span>
-                        <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Besar</span>
-                    </div>
-                    <div class="text-xs text-gray-600 mb-4 flex-1">
-                        Browny ramah dengan anak-anak dan suka bermain di luar ruangan, sangat cocok jadi teman bermain yang setia.
-                    </div>
-                    <a href="#" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
-                </div>
-            </div>
-                
-            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                <img src="https://images.unsplash.com/photo-1518715308788-3005759c61d3?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
-                <div class="p-4 flex-1 flex flex-col">
-                    <div class="font-bold text-lg mb-1">Penyihir Oren</div>
-                    <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
-                    <div class="mb-2">
-                        <span class="font-semibold text-xs">Gender:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
-                        <span class="font-semibold text-xs ml-2">Breed:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
-                    </div>
-                    <div class="mb-2">
-                        <span class="font-semibold text-xs">Umur:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">1 Tahun</span>
-                        <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
-                    </div>
-                    <div class="text-xs text-gray-600 mb-4 flex-1">
-                        Penyihir Oren suka tidur di sofa dan menghibur keluarga dengan tingkah lucu menggemaskan.
-                    </div>
-                    <a href="#" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
-                </div>
-            </div>
-               
-            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" alt="Cat" class="h-40 w-full object-cover">
-                <div class="p-4 flex-1 flex flex-col">
-                    <div class="font-bold text-lg mb-1">Tukang Gigit Sendal</div>
-                    <div class="text-xs text-gray-500 mb-2">Bali, Tuban</div>
-                    <div class="mb-2">
-                        <span class="font-semibold text-xs">Gender:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Jantan</span>
-                        <span class="font-semibold text-xs ml-2">Breed:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kalko</span>
-                    </div>
-                    <div class="mb-2">
-                        <span class="font-semibold text-xs">Umur:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">2 Tahun</span>
-                        <span class="font-semibold text-xs ml-2">Ukuran:</span>
-                        <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">Kecil</span>
-                    </div>
-                    <div class="text-xs text-gray-600 mb-4 flex-1">
-                        Tukang Gigit Sendal aktif dan penasaran, cocok dengan keluarga yang suka bermain dan penuh kasih sayang.
-                    </div>
-                    <a href="#" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <div class="mt-15 text-center">
@@ -248,7 +184,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                 <!-- FAQ Adopters -->
-                <div class="p-8 border rounded-xl text-center shadow-sm hover:shadow-md transition">
+                <a href="/faq-adopt" class="p-8 border rounded-xl text-center shadow-sm hover:shadow-md transition">
                     <div class="text-purple-700 text-5xl mb-4">💬</div>
                     <h3 class="text-purple-800 font-semibold text-lg mb-2">
                         FAQ's untuk Adopters
@@ -257,10 +193,10 @@
                         Apabila anda ingin mengadopsi hewan peliharaan, pasti ada banyak hal yang perlu dipastikan.
                         Klik bagian ini untuk melihat pertanyaan-pertanyaan yang sering ditanyakan.
                     </p>
-                </div>
+                </a>
 
                 <!-- FAQ Rehomers -->
-                <div class="p-8 border rounded-xl text-center shadow-sm hover:shadow-md transition">
+                <a href="/faq-rehome" class="p-8 border rounded-xl text-center shadow-sm hover:shadow-md transition">
                     <div class="text-purple-700 text-5xl mb-4">💬</div>
                     <h3 class="text-purple-800 font-semibold text-lg mb-2">
                         FAQ's untuk Rehomers
@@ -268,7 +204,7 @@
                     <p class="text-gray-600">
                         Menemukan rumah baru untuk seekor hewan peliharaan tidak perlu menjadi tugas yang menakutkan.
                     </p>
-                </div>
+</a>
 
             </div>
         </div>

@@ -9,14 +9,17 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RehomerController;
-
+use App\Models\Pet;
 Route::get('/register', [RegisterController::class, 'view'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 Route::get('/login', [LoginController::class, 'view'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
 Route::get('/adopt/detail-adopt/{pet}', [PostController::class, 'indexDetail'])->name('adopt.detail');
 Route::get('/adopt/post-adopt', [PostController::class, 'indexAdopt'])->name('adopt.post');
-Route::get('/', function () {return view('landing'); })->name('landing');
+Route::get('/', function () {
+    $pets = Pet::where('status', 'available')->latest()->take(4)->get();
+    return view('landing', ['pets' => $pets]);
+})->name('landing');
 Route::get('/rehomer/formulir', [RehomerController::class, 'create'])->name('rehomer.form');
 Route::post('/rehomer/formulir', [RehomerController::class, 'store'])->name('rehomer.store');
 
