@@ -63,7 +63,7 @@
                         <span class="inline-block bg-[#FDC8FD] text-[#5E225E] rounded px-2 py-0.5 text-xs ml-1">{{ $pet->size }}</span>
                     </div>
                     <div class="text-xs text-gray-600 mb-4 flex-1">
-                        Tukang Gigit Sendal aktif dan penasaran, cocok dengan keluarga yang suka bermain dan penuh kasih sayang.
+                        {{ Str::limit($pet->description, 100) }}
                     </div>
                     <a href="{{ route('adopt.detail', $pet) }}" class="block text-center border border-[#D678D6] text-[#D678D6] rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition">More Info...</a>
                 </div>

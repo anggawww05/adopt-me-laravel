@@ -15,7 +15,7 @@
 
             <ul class="flex items-center space-x-12 text-black text-md font-medium">
                 <li><a href="/" class="hover:text-[#5E225E] hover:underline transition">Home</a></li>
-                <li><a href="adopt/post-adopt" class="hover:text-[#5E225E] hover:underline transition">Adopt</a></li>
+                <li><a href="/adopt/post-adopt" class="hover:text-[#5E225E] hover:underline transition">Adopt</a></li>
                 <li><a href="/rehomer/formulir" class="hover:text-[#5E225E] hover:underline transition">Rehome</a></li>
                 <li><a href="/tentang-kami" class="hover:text-[#5E225E] hover:underline transition duration-200">Tentang Kami</a></li>
             </ul>
@@ -81,7 +81,7 @@
                     <div>
                         <h1 class="text-base lg:text-lg font-semibold text-gray-800 mb-4">Butuh bantuan?</h1>
                         <ul class="space-y-3">
-                            <li><a href="adopt/post-adopt" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Adopt a pet</a></li>
+                            <li><a href="/adopt/post-adopt" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Adopt a pet</a></li>
                             <li><a href="/rehomer/formulir" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Rehome a pet</a></li>
                             <li><a href="/faq-adopt" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Adopt FAQ's</a></li>
                             <li><a href="/faq-rehome" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Rehome FAQ's</a></li>

@@ -54,22 +54,29 @@
                 @if($pets->count())
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach ($pets as $pet)
-                            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col transform hover:-translate-y-1 transition-transform duration-300">
-                                <img src="{{ asset('storage/' . $pet->picture1) }}" alt="{{ $pet->name }}" class="h-48 w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia';">
-                                <div class="p-4 flex-1 flex flex-col">
-                                    <h3 class="font-bold text-lg mb-1 text-gray-800">{{ $pet->name }}</h3>
-                                    <div class="text-xs text-gray-500 mb-2">{{ $pet->city }}</div>
-                                    <div class="mb-3">
-                                        <span class="inline-block bg-purple-100 text-purple-600 rounded-full px-3 py-1 text-xs font-semibold mr-2">{{ ucfirst($pet->gender) }}</span>
-                                        <span class="inline-block bg-purple-100 text-purple-600 rounded-full px-3 py-1 text-xs font-semibold">{{ $pet->breed }}</span>
-                                    </div>
-                                    <p class="text-sm text-gray-600 mb-4 flex-1">
-                                        {{ Str::limit($pet->description, 100) }}
-                                    </p>
-                                    <a href="{{ route('adopt.detail', $pet) }}" class="block text-center border border-purple-300 text-purple-600 rounded-lg py-2 text-sm font-semibold hover:bg-purple-50 transition mt-auto">More Info...</a>
+                        <div class="group bg-white rounded-xl shadow-md overflow-hidden flex flex-col relative transform hover:-translate-y-1 transition-transform duration-300">
+                            
+                            <img src="{{ asset('storage/' . $pet->picture1) }}" alt="{{ $pet->name }}" class="h-48 w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia';">
+                            
+                            <div class="p-4 flex-1 flex flex-col">
+                                <h3 class="font-bold text-lg mb-1 text-gray-800">{{ $pet->name }}</h3>
+                                <div class="text-xs text-gray-500 mb-2">{{ $pet->city }}</div>
+                                <div class="mb-3">
+                                    <span class="inline-block bg-purple-100 text-purple-600 rounded-full px-3 py-1 text-xs font-semibold mr-2">{{ ucfirst($pet->gender) }}</span>
+                                    <span class="inline-block bg-purple-100 text-purple-600 rounded-full px-3 py-1 text-xs font-semibold">{{ $pet->breed }}</span>
                                 </div>
+                                <p class="text-sm text-gray-600 mb-4 flex-1">
+                                    {{ Str::limit($pet->description, 100) }}
+                                </p>
+
+                                <a href="{{ route('adopt.detail', $pet) }}" class="text-center font-semibold text-purple-600 group-hover:text-purple-800 transition mt-auto border border-purple-600 hover:bg-purple-600 hover:text-white rounded-2xl px-3 py-3 relative inline-block">
+                                    <span class="absolute inset-0" aria-hidden="true"></span>
+                                    More Info...
+                                </a>
                             </div>
-                        @endforeach
+
+                        </div>
+                    @endforeach
                     </div>
                     <!-- Pagination Links -->
                     <div class="mt-8">
