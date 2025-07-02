@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
@@ -33,3 +34,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/account', [AccountController::class, 'index'])->name('account');
 Route::put('/account/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
 Route::delete('/search-history/{id}', [AccountController::class, 'deleteSearchHistory'])->name('searchHistory.destroy');
+
+Route::get('/admin/dashboard', [AdminController::class, 'indexDashboard'])->name('admin.dashboard');
+Route::get('/admin/pengguna', [AdminController::class, 'indexUsers'])->name('admin.pengguna');
