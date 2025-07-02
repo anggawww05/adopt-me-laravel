@@ -21,22 +21,37 @@ Route::get('/', function () {
     $pets = Pet::where('status', 'available')->latest()->take(4)->get();
     return view('landing', ['pets' => $pets]);
 })->name('landing');
-Route::get('/rehomer/formulir', [RehomerController::class, 'create'])->name('rehomer.form');
-Route::post('/rehomer/formulir', [RehomerController::class, 'store'])->name('rehomer.store');
 
-Route::get('/adopsi/formulir/{pet}', [AdoptionController::class, 'create'])->name('adoption.form');
-Route::post('/adopsi/formulir/{pet}', [AdoptionController::class, 'store'])->name('adoption.store');
+
+
 Route::get('/faq-adopt', [FAQController::class, 'adopter_view'])->name('faqAdopt.view');
 Route::get('/faq-rehome', [FAQController::class, 'rehomer_view'])->name('faqRehome.view');
 Route::get('/tentang-kami', [TentangKamiController::class, 'view'])->name('tentangKami.view');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/account', [AccountController::class, 'index'])->name('account');
-Route::put('/account/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
+
 Route::delete('/search-history/{id}', [AccountController::class, 'deleteSearchHistory'])->name('searchHistory.destroy');
 
 Route::get('/admin/dashboard', [AdminController::class, 'indexDashboard'])->name('admin.dashboard');
 Route::get('/admin/pengguna', [AdminController::class, 'indexUsers'])->name('admin.pengguna');
+<<<<<<< HEAD
 Route::get('/admin/pengguna/tambah', [AdminController::class, 'createUser'])->name('admin.pengguna.create');
 Route::post('/admin/pengguna/tambah', [AdminController::class, 'storeUser'])->name('admin.pengguna.store');
 // Route::get('/admin/pengguna/{id}', [AdminController::class, 'showUser'])->name('admin.pengguna.show');
+=======
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    //rehome
+    Route::get('/rehomer/formulir', [RehomerController::class, 'create'])->name('rehomer.form');
+    Route::post('/rehomer/formulir', [RehomerController::class, 'store'])->name('rehomer.store');
+
+    //adopt
+    Route::get('/adopsi/formulir/{pet}', [AdoptionController::class, 'create'])->name('adoption.form');
+    Route::post('/adopsi/formulir/{pet}', [AdoptionController::class, 'store'])->name('adoption.store');
+
+    //account
+    Route::get('/account', [AccountController::class, 'index'])->name('account');
+    Route::put('/account/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
+});
+>>>>>>> fecfe0946bddd5ef6c6b6884c8dddee8c5a61b04
