@@ -83,8 +83,18 @@
         </div>
 
         <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
-            <form method="POST" action="{{ route('rehomer.store', $pet) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('rehomer.store') }}" enctype="multipart/form-data">
                 @csrf
+                @if ($errors->any())
+                    <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                        <p class="font-bold">Terjadi Kesalahan:</p>
+                        <ul class="mt-2 list-disc list-inside">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div x-show="currentStep === 1" class="text-center">
                     <img src="{{ Auth::user()->picture_profile ? asset('storage/' . Auth::user()->picture_profile) : asset('images/default_profile.jpg') }}"
                         alt="Profile" class="w-24 h-24 rounded-full mx-auto mb-4">
@@ -103,8 +113,7 @@
 
                 <div x-show="currentStep === 2" class="flex flex-col gap-6">
                     <div>
-                        <label for="jenis_hewan" class="block mb-2 font-medium text-gray-700">Hewan apa yang ada
-                            rehome?</label>
+                        <label for="jenis_hewan" class="block mb-2 font-medium text-gray-700">Hewan apa yang anda rehome?</label>
                         <select id="jenis_hewan" name="jenis_hewan" required
                             class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
                             <option value="">Pilih Opsi</option>
@@ -115,20 +124,35 @@
                     </div>
 
                     <div>
-                        <label class="block mb-2 font-medium text-gray-700">Apakah hewan peliharaan Anda sudah
-                            disterilkan?</label>
+                        <label class="block mb-2 font-medium text-gray-700">Apakah hewan peliharaan Anda sudah disterilkan?</label>
                         <div class="flex items-center space-x-6">
                             <label class="inline-flex items-center">
-                                <input type="radio" name="steril_status" value="yes" required
-                                    class="form-radio text-purple-600">
+                                <input type="radio" name="steril_status" value="yes" required class="form-radio text-purple-600">
                                 <span class="ml-2">Iya</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="radio" name="steril_status" value="no" required
-                                    class="form-radio text-purple-600">
+                                <input type="radio" name="steril_status" value="no" required class="form-radio text-purple-600">
                                 <span class="ml-2">Tidak</span>
                             </label>
                         </div>
+                    </div>
+
+                    <div>
+                        <label for="rehome_reason" class="block mb-2 font-medium text-gray-700">Mengapa Anda perlu me-rehome hewan ini? <span class="text-red-500">*</span></label>
+                        <textarea id="rehome_reason" name="rehome_reason" rows="4" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500" placeholder="Contoh: Saya akan pindah dan tidak bisa membawanya..."></textarea>
+                    </div>
+
+                    <div>
+                        <label for="waiting_time" class="block mb-2 font-medium text-gray-700">
+                            Berapa lama Anda mampu menampung hewan ini selagi kami carikan rumah baru? <span class="text-red-500">*</span>
+                        </label>
+                        <select id="waiting_time" name="waiting_time" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                            <option value="">Pilih Opsi</option>
+                            <option value="1 Minggu">1 Minggu</option>
+                            <option value="2 Minggu">2 Minggu</option>
+                            <option value="1 Bulan">1 Bulan</option>
+                            <option value="Lebih dari 1 Bulan">Lebih dari 1 Bulan</option>
+                        </select>
                     </div>
 
                     <div>
@@ -142,21 +166,6 @@
                             <option value="no">Tidak</option>
                         </select>
                     </div>
-
-                    {{-- <div>
-                        <label for="durasi_penampungan" class="block mb-2 font-medium text-gray-700">
-                            Berapa lama Anda mampu memelihara hewan peliharaan Anda sementara kami membantu mencari
-                            rumah baru yang cocok?
-                        </label>
-                        <select id="durasi_penampungan" name="durasi_penampungan" required
-                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                            <option value="">Pilih Opsi</option>
-                            <option value="1_minggu">1 Minggu</option>
-                            <option value="2_minggu">2 Minggu</option>
-                            <option value="1_bulan">1 Bulan</option>
-                            <option value="lebih_dari_1_bulan">Lebih dari 1 Bulan</option>
-                        </select>
-                    </div> --}}
                 </div>
 
                 <div x-show="currentStep === 3" class="space-y-6">

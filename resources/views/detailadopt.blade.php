@@ -22,15 +22,15 @@
                 <div class="w-full md:w-2/3">
                     <div>
                         {{-- Main Image --}}
-                        <img src="{{ asset($pet->piture) }}" alt="{{ $pet->name }}" class="w-full h-96 rounded-lg shadow-md object-cover" onerror="this.onerror=null;this.src='https://placehold.co/800x600/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia';">
+                        <img src="{{ asset('storage/' . $pet->picture1) }}" alt="{{ $pet->name }}" class="w-full h-96 rounded-lg shadow-md object-cover" onerror="this.onerror=null;this.src='https://placehold.co/800x600/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia';">
                     </div>
                     {{-- Thumbnails --}}
                     <div class="flex gap-3 mt-4">
                         {{-- NOTE: These all use the same image because the database only has one picture field. --}}
-                        <img src="{{ asset($pet->piture) }}" alt="Thumbnail 1" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
-                        <img src="{{ asset($pet->piture) }}" alt="Thumbnail 2" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
-                        <img src="{{ asset($pet->piture) }}" alt="Thumbnail 3" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
-                        <img src="{{ asset($pet->piture) }}" alt="Thumbnail 4" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
+                        <img src="{{ asset('storage/' . $pet->picture1) }}" alt="Thumbnail 1" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
+                        <img src="{{ asset('storage/' . $pet->picture2) }}" alt="Thumbnail 2" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
+                        <img src="{{ asset('storage/' . $pet->picture3) }}" alt="Thumbnail 3" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
+                        <img src="{{ asset('storage/' . $pet->picture4) }}" alt="Thumbnail 4" class="w-1/4 h-32 rounded-lg shadow-md object-cover">
                     </div>
                 </div>
 

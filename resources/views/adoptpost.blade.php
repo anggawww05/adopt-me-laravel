@@ -55,7 +55,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach ($pets as $pet)
                             <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col transform hover:-translate-y-1 transition-transform duration-300">
-                                <img src="{{ asset($pet->piture) }}" alt="{{ $pet->name }}" class="h-48 w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia';">
+                                <img src="{{ asset('storage/' . $pet->picture1) }}" alt="{{ $pet->name }}" class="h-48 w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/E2E8F0/94A3B8?text=Gambar+Tidak+Tersedia';">
                                 <div class="p-4 flex-1 flex flex-col">
                                     <h3 class="font-bold text-lg mb-1 text-gray-800">{{ $pet->name }}</h3>
                                     <div class="text-xs text-gray-500 mb-2">{{ $pet->city }}</div>

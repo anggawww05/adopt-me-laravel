@@ -6,23 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pet extends Model
 {
+    // This $fillable array should match your model and the new migration
     protected $fillable = [
         'species',
-        'steril_status',
-        'problematic_status',
+        'breed',
+        'status',
+        'rehome_reason',
+        'waiting_time',
         'name',
         'age',
-        'breed',
-        'size',
+        'behavior',
         'gender',
+        'address',
         'color',
-        'complete_vaksinated',
+        'vaccination_status',
         'trained_status',
         'good_with_animals',
         'good_with_kids',
-        'pure_breed',
+        'steril_status',
         'special_needs',
-        'address',
+        'problematic_status',
         'city',
         'post_code',
         'description',
