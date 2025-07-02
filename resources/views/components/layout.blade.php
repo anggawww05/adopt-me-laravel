@@ -33,10 +33,13 @@
             @auth
                 <div>
                     {{-- If the user is LOGGED IN, show their profile picture and a logout link --}}
-                    <div class="flex items-center space-x-4 border border-purple-300 rounded-lg px-4 py-2">
+                    <a href="/account">
+                        <div class="flex items-center space-x-4 border border-purple-300 rounded-lg px-4 py-2">
                         <img src="{{ Auth::user()->picture_profile ? asset('storage/' . Auth::user()->picture_profile) : asset('images/default_profile.jpg') }}" alt="Profile Picture" class="h-12 w-12 rounded-full object-cover border-2 border-purple-300">
                         <span class="text-sm font-semibold text-gray-700">{{ Auth::user()->name }}</span>
                     </div>
+                    </a>
+                    
                     {{-- Untuk sementara logout disini --}}
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
