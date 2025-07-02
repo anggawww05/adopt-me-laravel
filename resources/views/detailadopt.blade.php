@@ -6,7 +6,7 @@
             <div class="flex gap-4 mt-4">
                 <div>
                     {{-- This now correctly shows the pet's picture --}}
-                    <img src="{{ asset($pet->piture) }}" alt="{{ $pet->name }}" class="w-12 h-12 rounded-full shadow-md object-cover" onerror="this.onerror=null;this.src='{{ asset('images/default_profile.png') }}';">
+                    <img src="{{ asset('storage/' . $pet->picture1) }}" alt="{{ $pet->name }}" class="w-12 h-12 rounded-full shadow-md object-cover" onerror="this.onerror=null;this.src='{{ asset('images/default_profile.png') }}';">
                 </div>
                 <div>
                     <p class="text-gray-600 text-sm font-semibold">{{ $pet->name }}</p>
@@ -58,13 +58,12 @@
 
             <div class="mt-8 flex flex-col md:flex-row gap-8 items-center">
                 <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
-                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Gender</div><div class="text-sm font-semibold text-purple-600">{{ ucfirst($pet->gender) }}</div></div>
-                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Breed</div><div class="text-sm font-semibold text-purple-600">{{ $pet->breed }}</div></div>
-                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Umur</div><div class="text-sm font-semibold text-purple-600">{{ $pet->age }} bulan</div></div>
-                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Warna</div><div class="text-sm font-semibold text-purple-600">{{ $pet->color }}</div></div>
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Gender</div><div class="text-sm font-semibold text-purple-600 text-center">{{ ucfirst($pet->gender) }}</div></div>
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Breed</div><div class="text-sm font-semibold text-purple-600 text-center">{{ $pet->breed }}</div></div>
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Umur</div><div class="text-sm font-semibold text-purple-600 text-center">{{ $pet->age }} tahun</div></div>
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Warna</div><div class="text-sm font-semibold text-purple-600 text-center">{{ $pet->color }}</div></div>
                     {{-- Note: Weight and Height are not in the database, using placeholders. --}}
-                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Berat</div><div class="text-sm font-semibold text-purple-600">-</div></div>
-                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Tinggi</div><div class="text-sm font-semibold text-purple-600">-</div></div>
+                    <div class="flex flex-col items-center p-3 bg-gray-50 rounded-xl shadow-sm w-28"><div class="text-xs text-gray-500">Ukuran</div><div class="text-sm font-semibold text-purple-600 text-center">{{ $pet->size }}</div></div>
                 </div>
                 <div class="flex-1 flex justify-end">
                     <div class="border rounded-xl p-6 bg-white shadow-md flex flex-col items-center justify-center w-full md:w-96">
