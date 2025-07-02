@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Role;
 
 class AdminController extends Controller
 {
@@ -15,21 +17,41 @@ class AdminController extends Controller
     //index tabel pengguna
     public function indexUsers()
     {
-        return view('admin.pengguna');
+        $users = User::all();
+        return view('admin.pengguna', compact('users'));
     }
 
     // Tampilkan form tambah pengguna
     public function createUser()
     {
-        return view('admin.tambah_pengguna');
+        $roles = Role::all();
+        return view('admin.tambah-pengguna', compact('roles'));
     }
 
     // Simpan pengguna baru
     public function storeUser(Request $request)
     {
-        // Validasi dan simpan data pengguna
-        // Contoh sederhana:
-        // User::create($request->all());
+        $validated = $request->validate([
+            'name'            => 'required|string|max:255',
+            'email'           => 'required|email|unique:users,email',
+            'password'        => 'required|string|min:6|confirmed',
+            'phone'           => 'nullable|string|max:20',
+            'address'         => 'nullable|string|max:255',
+            'picture_profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'role_id'         => 'required|exists:roles,id',
+        ]);
+
+        if ($request->hasFile('picture_profile')) {
+            $file = $request->file('picture_profile');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('profile_pictures', $filename, 'public');
+            $validated['picture_profile'] = $path;
+        }
+
+        $validated['password'] = bcrypt($validated['password']);
+
+        User::create($validated);
+
         return redirect()->route('admin.users')->with('success', 'Pengguna berhasil ditambahkan');
     }
 

@@ -37,3 +37,6 @@ Route::delete('/search-history/{id}', [AccountController::class, 'deleteSearchHi
 
 Route::get('/admin/dashboard', [AdminController::class, 'indexDashboard'])->name('admin.dashboard');
 Route::get('/admin/pengguna', [AdminController::class, 'indexUsers'])->name('admin.pengguna');
+Route::get('/admin/pengguna/tambah', [AdminController::class, 'createUser'])->name('admin.pengguna.create');
+Route::post('/admin/pengguna/tambah', [AdminController::class, 'storeUser'])->name('admin.pengguna.store');
+// Route::get('/admin/pengguna/{id}', [AdminController::class, 'showUser'])->name('admin.pengguna.show');

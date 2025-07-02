@@ -10,7 +10,7 @@
                     <p class="text-gray-600 mt-1">Kelola semua pengguna yang terdaftar di sistem</p>
                 </div>
                 <div class="flex space-x-3">
-                    <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center">
+                    <a href="{{ route('admin.pengguna.create' )}}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                         </svg>
@@ -72,27 +72,28 @@
                                     </svg>
                                 </div>
                             </th>
+                            <!-- Tambahkan kolom lain jika perlu -->
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach($users as $user)
                         <tr class="hover:bg-gray-50 transition-colors duration-200">
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">1</span>
+                                <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">{{ $loop->iteration }}</span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-10">
                                         <img class="h-10 w-10 rounded-full border-2 border-gray-200"
-                                             src="https://ui-avatars.com/api/?name=Andi&background=6366f1&color=fff"
+                                             src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=6366f1&color=fff"
                                              alt="Avatar">
                                     </div>
                                     <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">Andi</div>
-                                        <div class="text-sm text-gray-500">andi@example.com</div>
+                                        <div class="text-sm font-medium text-gray-900">{{ $user->name }}</div>
+                                        <div class="text-sm text-gray-500">{{ $user->email }}</div>
                                     </div>
                                 </div>
                             </td>
-
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex items-center space-x-2">
                                     <!-- View Button -->
@@ -105,7 +106,6 @@
                                             Lihat
                                         </span>
                                     </button>
-
                                     <!-- Edit Button -->
                                     <button class="group relative inline-flex items-center justify-center p-2 text-yellow-600 hover:text-yellow-900 hover:bg-yellow-50 rounded-lg transition-all duration-200">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,7 +115,6 @@
                                             Edit
                                         </span>
                                     </button>
-
                                     <!-- Delete Button -->
                                     <button onclick="return confirm('Yakin ingin menghapus pengguna ini?')"
                                             class="group relative inline-flex items-center justify-center p-2 text-red-600 hover:text-red-900 hover:bg-red-50 rounded-lg transition-all duration-200">
@@ -126,7 +125,6 @@
                                             Hapus
                                         </span>
                                     </button>
-
                                     <!-- More Options Dropdown -->
                                     <div x-data="{ open: false }" class="relative">
                                         <button @click="open = !open"
@@ -135,7 +133,6 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
                                             </svg>
                                         </button>
-
                                         <div x-show="open"
                                              @click.away="open = false"
                                              x-transition:enter="transition ease-out duration-100"
@@ -171,6 +168,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
