@@ -182,68 +182,48 @@
 
                 <div x-show="currentStep === 4" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="nama_hewan" class="block mb-2 font-medium text-gray-700">Nama Hewan <span
-                                class="text-red-500">*</span></label>
-                        <input type="text" id="nama_hewan" name="nama_hewan" required
-                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                        <p class="text-xs text-gray-500 mt-1">Jika hewan peliharaan Anda adalah anakan, tambahkan
-                            usianya sebagai 0</p>
+                        <label for="nama_hewan" class="block mb-2 font-medium text-gray-700">Nama Hewan <span class="text-red-500">*</span></label>
+                        <input type="text" id="nama_hewan" name="nama_hewan" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                        <p class="text-xs text-gray-500 mt-1">Jika hewan peliharaan Anda adalah anakan, tambahkan usianya sebagai 0</p>
                     </div>
+                    
                     <div>
-                        <label for="umur" class="block mb-2 font-medium text-gray-700">Umur <span
-                                class="text-red-500">*</span></label>
-                        <select id="umur" name="umur" required
-                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                            @for ($i = 0; $i <= 20; $i++)
+                        <label for="umur" class="block mb-2 font-medium text-gray-700">Umur (tahun) <span class="text-red-500">*</span></label>
+                        <select id="umur" name="umur" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                            <option value="unknown">Tidak Diketahui</option>
+                            @for ($i = 0; $i <= 36; $i++)
                                 <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
                         </select>
                     </div>
+
                     <div>
-                        <label for="ukuran" class="block mb-2 font-medium text-gray-700">Ukuran <span
-                                class="text-red-500">*</span></label>
-                        <select id="ukuran" name="ukuran" required
-                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                        <label for="ukuran" class="block mb-2 font-medium text-gray-700">Ukuran <span class="text-red-500">*</span></label>
+                        <select id="ukuran" name="ukuran" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
                             <option value="">Pilih Opsi</option>
                             <option value="kecil">Kecil</option>
                             <option value="sedang">Sedang</option>
                             <option value="besar">Besar</option>
                         </select>
                     </div>
+                    
                     <div>
-                        <label for="gender" class="block mb-2 font-medium text-gray-700">Gender <span
-                                class="text-red-500">*</span></label>
-                        <select id="gender" name="gender" required
-                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                        <label for="gender" class="block mb-2 font-medium text-gray-700">Gender <span class="text-red-500">*</span></label>
+                        <select id="gender" name="gender" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
                             <option value="">Pilih Opsi</option>
                             <option value="jantan">Jantan</option>
                             <option value="betina">Betina</option>
                         </select>
                     </div>
+                    
                     <div>
-                        <label for="breed" class="block mb-2 font-medium text-gray-700">Breed <span
-                                class="text-red-500">*</span></label>
-                        <select id="breed" name="breed" required
-                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                            <option value="">Pilih Opsi</option>
-                            <option value="campuran">Campuran</option>
-                            <option value="ras">Ras</option>
-                            <option value="lainnya">Lainnya</option>
-                        </select>
+                        <label for="breed" class="block mb-2 font-medium text-gray-700">Breed <span class="text-red-500">*</span></label>
+                        <input type="text" id="breed" name="breed" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500" placeholder="Contoh: Persia, Golden Retriever">
                     </div>
+                    
                     <div>
-                        <label for="warna" class="block mb-2 font-medium text-gray-700">Warna <span
-                                class="text-red-500">*</span></label>
-                        <select id="warna" name="warna" required
-                            class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
-                            <option value="">Pilih Opsi</option>
-                            <option value="hitam">Hitam</option>
-                            <option value="putih">Putih</option>
-                            <option value="coklat">Coklat</option>
-                            <option value="abu-abu">Abu-abu</option>
-                            <option value="kuning">Kuning</option>
-                            <option value="lainnya">Lainnya</option>
-                        </select>
+                        <label for="warna" class="block mb-2 font-medium text-gray-700">Warna <span class="text-red-500">*</span></label>
+                        <input type="text" id="warna" name="warna" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500" placeholder="Contoh: Hitam, Putih, Coklat">
                     </div>
                 </div>
 

@@ -15,6 +15,7 @@ class Pet extends Model
         'waiting_time',
         'name',
         'age',
+        'size',
         'behavior',
         'gender',
         'address',

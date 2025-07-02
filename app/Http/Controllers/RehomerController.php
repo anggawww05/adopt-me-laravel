@@ -27,11 +27,11 @@ class RehomerController extends Controller
             'waiting_time' => 'required|string|max:255',
             'problematic_status' => 'required|in:yes,no',
             'nama_hewan' => 'required|string|max:255',
-            'umur' => 'required|integer|min:0',
+            'umur' => 'required',
             'ukuran' => 'required|in:kecil,sedang,besar',
             'gender' => 'required|in:jantan,betina',
             'breed' => 'required|string|max:255',
-            'warna' => 'required|string',
+            'warna' => 'required|string|max:255',
             'vaksin_lengkap' => 'required|in:iya,tidak,tidak_diketahui',
             'sudah_dilatih' => 'required|in:iya,tidak,tidak_diketahui',
             'baik_dengan_hewan_lain' => 'required|in:iya,tidak,tidak_diketahui',
@@ -69,12 +69,13 @@ class RehomerController extends Controller
                 }
             }
         }
-
+        $ageValue = $validatedData['umur'] === 'unknown' ? null : $validatedData['umur'];
         // This create() call correctly includes rehome_reason and all other fields
         Pet::create([
             'species' => $validatedData['jenis_hewan'],
             'name' => $validatedData['nama_hewan'],
-            'age' => $validatedData['umur'],
+            'age' => $ageValue,
+            'size' => $validatedData['ukuran'],
             'gender' => $validatedData['gender'] == 'jantan' ? 'male' : 'female',
             'breed' => $validatedData['breed'],
             'color' => $validatedData['warna'],
