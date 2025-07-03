@@ -47,7 +47,14 @@ class PostController extends Controller
                 $query->where('age', '>', 36);
             }
         }
-
+        // 6. Filter by breed
+        if ($request->filled('breed')) {
+            $query->where('breed', 'like', '%' . $request->breed . '%');
+        }
+         // 7. Filter by size
+        if ($request->filled('size')) {
+            $query->where('size', $request->size);
+        }
         // Get the results, paginate them (9 per page), and keep the query string in the links
         $pets = $query->where('status', 'available')->paginate(9)->withQueryString();
 

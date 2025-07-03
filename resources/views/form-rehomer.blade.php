@@ -188,7 +188,7 @@
                     </div>
                     
                     <div>
-                        <label for="umur" class="block mb-2 font-medium text-gray-700">Umur (tahun) <span class="text-red-500">*</span></label>
+                        <label for="umur" class="block mb-2 font-medium text-gray-700">Umur (Bulan) <span class="text-red-500">*</span></label>
                         <select id="umur" name="umur" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
                             <option value="unknown">Tidak Diketahui</option>
                             @for ($i = 0; $i <= 36; $i++)
