@@ -6,9 +6,10 @@
     <title>{{ $title ?? 'Adopt Me!' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.2" defer></script>
 </head>
 
-<body class="font-[Montserrat] bg-gray-50 text-gray-800">
+<body class="font-[Montserrat] bg-white text-gray-800">
     <header class="bg-white shadow-sm sticky top-0 z-50 font-primary">
         <nav class="container mx-auto px-20 py-6 flex justify-between items-center">
             <img src="{{ asset('images/adoptme_logo.png') }}" alt="Adopt Me Logo" class="h-12 xs:h-2 md:h-14 lg:h-16">

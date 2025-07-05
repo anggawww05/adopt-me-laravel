@@ -206,7 +206,7 @@
                     <p class="text-gray-600">
                         Menemukan rumah baru untuk seekor hewan peliharaan tidak perlu menjadi tugas yang menakutkan.
                     </p>
-</a>
+                </a>
 
             </div>
         </div>
