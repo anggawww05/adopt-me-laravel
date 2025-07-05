@@ -186,7 +186,7 @@
                         <input type="text" id="nama_hewan" name="nama_hewan" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
                         <p class="text-xs text-gray-500 mt-1">Jika hewan peliharaan Anda adalah anakan, tambahkan usianya sebagai 0</p>
                     </div>
-                    
+
                     <div>
                         <label for="umur" class="block mb-2 font-medium text-gray-700">Umur (tahun) <span class="text-red-500">*</span></label>
                         <select id="umur" name="umur" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
@@ -206,7 +206,7 @@
                             <option value="besar">Besar</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <label for="gender" class="block mb-2 font-medium text-gray-700">Gender <span class="text-red-500">*</span></label>
                         <select id="gender" name="gender" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500">
@@ -215,12 +215,12 @@
                             <option value="betina">Betina</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <label for="breed" class="block mb-2 font-medium text-gray-700">Breed <span class="text-red-500">*</span></label>
                         <input type="text" id="breed" name="breed" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500" placeholder="Contoh: Persia, Golden Retriever">
                     </div>
-                    
+
                     <div>
                         <label for="warna" class="block mb-2 font-medium text-gray-700">Warna <span class="text-red-500">*</span></label>
                         <input type="text" id="warna" name="warna" required class="w-full border-gray-300 rounded-lg shadow-sm focus:border-purple-500 focus:ring-purple-500" placeholder="Contoh: Hitam, Putih, Coklat">

@@ -3,7 +3,7 @@
 @section('container')
     <div class="ml-64 p-8 bg-gray-50 min-h-screen ">
         <h2 class="text-2xl font-bold mb-8 text-gray-800">Tambah Pengguna</h2>
-        <form action="#" method="POST" enctype="multipart/form-data" class="bg-white rounded-lg shadow-md p-8 w-full">
+        <form action="{{route('admin.pengguna.store')}}" method="POST" enctype="multipart/form-data" class="bg-white rounded-lg shadow-md p-8 w-full">
             @csrf
             <div class="mb-5">
                 <label for="name" class="block text-gray-700 font-medium mb-2">Nama</label>
@@ -22,8 +22,8 @@
                 <input type="text" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" id="phone" name="phone" required>
             </div>
             <div class="mb-5">
-                <label for="address" class="block text-gray-700 font-medium mb-2">Alamat</label>
-                <textarea class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" id="address" name="address" rows="2" required></textarea>
+                <label for="address" name="address" class="block text-gray-700 font-medium mb-2">Alamat</label>
+                <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" id="address" name="address" rows="2" required></input>
             </div>
             <div class="mb-5">
                 <label for="picture_profile" class="block text-gray-700 font-medium mb-2">Foto Profil</label>
