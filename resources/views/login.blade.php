@@ -10,6 +10,13 @@
                         {{ session('status') }}
                     </div>
                 @endif
+                @if ($errors->any())
+                    <div class="mb-4 font-medium text-sm text-red-600 bg-red-100 p-3 rounded-lg">
+                        @foreach ($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('login.authenticate') }}">
                     @csrf
                     <div class="mb-3">
