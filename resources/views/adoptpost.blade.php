@@ -1,5 +1,5 @@
 <x-layout title="Adopsi Hewan - Adopt Me!">
-    <div class="min-h-screen bg-gray-100 py-10">
+    <div class="min-h-screen py-10">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
             
             <!-- Filter Sidebar -->

@@ -105,11 +105,11 @@
                 <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-white">
                     <div class="flex items-center gap-2">
                         <img src="{{ asset('images/icon_landing1.png') }}" class="w-8 h-8 object-contain">
-                        <h1 class="font-semibold text-lg text-emerald-900">Saling Memberi dan Menerima Kasih Sayang</h1>
+                        <h1 class="font-semibold text-lg text-emerald-900">Kerja Sama dalam Kehidupan Sehari-hari</h1>
                     </div>
                     <p class="text-gray-800 text-sm my-4">
-                        Hewan peliharaan memberikan cinta tanpa syarat, sementara manusia memberi perawatan, dan
-                        rasa aman, dan perhatian.
+                        Manusia menyediakan kebutuhan dasar hewan, sedangkan hewan bisa menjadi teman, penjaga,
+                        atau bahkan penyembuh stres secara alami.
                     </p>
                     <img src="{{ asset('images/icon_landing3.png') }}" class="w-10 h-10 object-contain">
                 </div>
@@ -117,11 +117,10 @@
                 <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-white">
                     <div class="flex items-center gap-2">
                         <img src="{{ asset('images/icon_landing1.png') }}" class="w-8 h-8 object-contain">
-                        <h1 class="font-semibold text-lg text-emerald-900">Saling Memberi dan Menerima Kasih Sayang</h1>
+                        <h1 class="font-semibold text-lg text-emerald-900">Keharmonisan Kehidupan dan Alam</h1>
                     </div>
                     <p class="text-gray-800 text-sm my-4">
-                        Hewan peliharaan memberikan cinta tanpa syarat, sementara manusia memberi perawatan, dan
-                        rasa aman, dan perhatian.
+                        Keharmonisan muncul saat manusia menyadari bahwa hewan juga makhluk hidup yang layak dihargai, dan dilindungi.
                     </p>
                     <img src="{{ asset('images/icon_landing4.png') }}" class="w-10 h-10 object-contain">
                 </div>

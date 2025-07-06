@@ -85,6 +85,7 @@
         @forelse ($searchHistories as $item)
             <div class="flex items-center justify-between bg-white px-4 py-3 rounded-xl shadow mb-3 hover:bg-gray-100 transition group">
                 <div class="flex flex-wrap gap-x-4 text-sm text-gray-700">
+                    <span><strong>Keyword:</strong> {{ ucfirst($item->keyword) }}</span>
                     <span><strong>Jenis:</strong> {{ ucfirst($item->species) }}</span>
                     <span><strong>Ukuran:</strong> {{ ucfirst($item->size ?? '-') }}</span>
                     <span><strong>Umur:</strong> {{ $item->estimated_minimum_age }} - {{ $item->estimated_maximum_age }} th</span>
