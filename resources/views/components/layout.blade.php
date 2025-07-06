@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Adopt Me!' }}</title>
+    <link rel="icon" href="{{ asset('images/logo_no_teks.png') }}" type="image/png">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/htmx.org@1.9.2" defer></script>
@@ -41,11 +42,6 @@
                     </div>
                     </a>
                     
-                    {{-- Untuk sementara logout disini --}}
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="text-sm text-gray-500 hover:text-purple-700 hover:underline">Logout</button>
-                    </form>
                 </div>
 
             @endauth
@@ -129,7 +125,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-center">
 
                     <p class="text-sm lg:text-base text-white mb-4 md:mb-0">
-                        &copy; {{ date('Y') }} AdoptMe.com
+                        &copy; {{ date('Y') }} AdoptMe.genk.top
                     </p>
 
                     <div class="flex items-center space-x-4 lg:space-x-6">

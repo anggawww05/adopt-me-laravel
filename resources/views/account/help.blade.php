@@ -1,16 +1,14 @@
-<h1 class="font-semibold text-lg mb-8">Dapatkan Bantuan Melalui</h3>
+<h1 class="font-semibold text-lg mb-8">Dapatkan Bantuan Melalui</h1>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <a href="/faq-adopt" class="p-8 border border-gray-200 rounded-xl text-center shadow-sm hover:shadow-md transition">
-        <div class="text-purple-700 text-5xl my-4">💬</div>
-        <h3 class="text-purple-800 font-semibold text-lg mb-4">
+    <a href="/faq-adopt" class="p-8 rounded-xl text-center shadow-sm hover:shadow-md transition">
+        <img src="{{ asset('images/icon_faq.png') }}" class="w-20 h-20 object-contain mx-auto mt-4 mb-2">
+        <h1 class="text-gray-900 font-semibold text-lg mb-6">
             FAQ's untuk Adopters
-        </h3>
+        </h1>
     </a>
 
-    <a href="/faq-rehome" class="p-8 border border-gray-200 rounded-xl text-center shadow-sm hover:shadow-md transition">
-        <div class="text-purple-700 text-5xl my-4">💬</div>
-        <h3 class="text-purple-800 font-semibold text-lg mb-4">
-            FAQ's untuk Rehomers
-        </h3>
+    <a href="/faq-rehome" class="p-8 rounded-xl text-center shadow-sm hover:shadow-md transition">
+        <img src="{{ asset('images/icon_faq.png') }}" class="w-20 h-20 object-contain mx-auto mt-4 mb-2">
+        <h1 class="text-gray-900 font-semibold text-lg mb-6">FAQ's untuk Rehomers</h1>
     </a>
 </div>

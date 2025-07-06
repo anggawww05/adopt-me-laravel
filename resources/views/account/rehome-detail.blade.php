@@ -9,14 +9,13 @@
 
 @if ($selectedPet)
 <div x-data="{ openModal: false, selectedAdoption: {} }">
-    {{-- Header Detail Pet --}}
     <div class="bg-white rounded-xl shadow p-6 mb-6">
         <h2 class="text-xl font-bold mb-4">Kepada {{ auth()->user()->name }}</h2>
         <p class="text-gray-700 mb-2">
             Anda menerima beberapa permintaan adopsi untuk mengadopsi <strong>{{ $selectedPet->name }}</strong>.
         </p>
 
-        <div class="flex items-center gap-4 p-4 border rounded bg-purple-50">
+        <div class="flex items-center gap-4 p-4 border border-gray-200 rounded-xl shadow-sm bg-purple-50">
             <img src="{{ asset('storage/' . $selectedPet->picture1) }}"
                  alt="{{ $selectedPet->name }}"
                  class="w-20 h-20 object-cover rounded-md"
@@ -32,11 +31,11 @@
 
     {{-- Tabel Permintaan Adopsi --}}
     <div class="bg-white rounded-xl shadow p-6">
-        <h3 class="text-lg font-bold mb-4">Permintaan Adopsi untuk {{ $selectedPet->name }}</h3>
+        <h1 class="text-lg font-bold mb-4">Permintaan Adopsi untuk {{ $selectedPet->name }}</h1>
 
-        <table class="w-full text-left table-auto">
+        <table class="w-full text-left table-auto border border-gray-200 shadow-sm">
             <thead>
-                <tr class="bg-gray-100 text-sm text-gray-700">
+                <tr class="bg-purple-50 text-sm text-gray-700">
                     <th class="p-3">Nama Adopter</th>
                     <th class="p-3">Lokasi</th>
                     <th class="p-3">Tanggal</th>
@@ -85,6 +84,13 @@
                             @elseif ($request->status === 'rejected')
                                 <span class="bg-red-100 text-red-700 px-3 py-1 text-xs rounded">Ditolak</span>
                             @endif
+
+                            @if ($request->appointment_date && $request->appointment_time)
+                                <div class="text-xs text-purple-700 mt-2">
+                                    Janji Temu: {{ \Carbon\Carbon::parse($request->appointment_date)->translatedFormat('d M Y') }},
+                                        {{ \Carbon\Carbon::parse($request->appointment_time)->format('H:i') }}
+                                </div>
+                            @endif
                         </td>
                     </tr>
                 @empty
@@ -100,11 +106,10 @@
     <div
         x-show="openModal"
         x-transition
-        class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+        class="fixed inset-0 flex items-center justify-center z-50 bg-black/75">
         <div class="bg-white p-6 rounded-xl w-full max-w-3xl shadow-lg relative max-h-[85vh] overflow-y-auto">
-            <button @click="openModal = false" class="absolute top-2 right-3 text-gray-500 text-xl">&times;</button>
 
-            <h2 class="text-2xl font-bold mb-4 text-purple-700">Formulir Permintaan Adopsi</h2>
+            <h1 class="text-2xl font-bold mb-4 text-purple-400">Formulir Permintaan Adopsi</h1>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-800">
                 <div>
@@ -197,7 +202,7 @@
 
             <div class="mt-6 text-right">
                 <button @click="openModal = false"
-                    class="bg-gray-200 hover:bg-gray-300 text-sm px-4 py-2 rounded">
+                    class="bg-purple-100 hover:bg-purple-300 text-sm px-4 py-2 rounded">
                     Tutup
                 </button>
             </div>

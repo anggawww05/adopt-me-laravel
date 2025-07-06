@@ -2,42 +2,50 @@
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 @endpush
 
+<h1 class="text-xl font-bold text-gray-800 mb-4">Profil Anda</h1>
 <div x-data="{ editing: false }" class="space-y-6">
-    {{-- RINGKASAN PROFIL --}}
     <div class="bg-white rounded-xl shadow p-6">
-        <div class="flex items-center justify-between">
+
+        <div class="flex items-start justify-between">
             <div class="flex items-center gap-4">
                 <img src="{{ auth()->user()->picture_profile ? asset('storage/' . auth()->user()->picture_profile) : 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) }}"
-                     alt="Foto Profil" class="w-20 h-20 object-cover rounded-full">
-
-                <div>
-                    <h2 class="text-xl font-bold">{{ auth()->user()->name }}</h2>
-                    <p class="text-gray-500">@ {{ auth()->user()->address ?? 'Belum diisi' }}</p>
-                </div>
+                alt="Foto Profil" 
+                class="w-36 h-36 object-cover rounded-full">
+            <div>
+                <h1 class="text-xl font-bold">{{ auth()->user()->name }}</h1>
+                <p class="text-gray-500 my-2">📍 {{ auth()->user()->address ?? 'Belum diisi' }}</p>
+                <p class="text-gray-500 my-2">📬 {{ auth()->user()->email }}</p>
+                <p class="text-gray-500 my-2">📱 {{ auth()->user()->phone ?? '-' }}</p>
             </div>
+        </div>
 
-            <button @click="editing = !editing"
-                class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
-                <span x-show="!editing">Edit Profile</span>
+        <div class="flex flex-col items-end gap-18">
+            <button 
+                @click="editing = !editing" 
+                class="border border-[#5E225E] text-[#5E225E] px-4 py-2 rounded hover:bg-[#5E225E] hover:text-white transition">
+                <span x-show="!editing">✏️ Edit Profile</span>
                 <span x-show="editing">Tutup</span>
             </button>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit"
+                    class="text-md text-red-600 font-semibold hover:underline hover:text-red-800 transition">
+                        Logout
+                </button>
+            </form>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 text-gray-700">
-            <p><strong>Email:</strong> {{ auth()->user()->email }}</p>
-            <p><strong>Telepon:</strong> {{ auth()->user()->phone ?? '-' }}</p>
-            <p><strong>Alamat:</strong> {{ auth()->user()->address ?? '-' }}</p>
-        </div>
     </div>
+</div>
 
-    {{-- FORM EDIT (ditampilkan jika editing=true) --}}
-    <div x-show="editing" x-transition class="bg-white rounded-xl shadow p-6 border border-purple-200">
-        <h3 class="text-lg font-bold mb-4 text-indigo-700">Form Edit Profil</h3>
+
+<div x-show="editing" x-transition class="bg-white rounded-xl shadow p-6">
+        <h1 class="text-lg font-bold mb-4 text-[#5E225E]">Form Edit Profil</h1>
 
         <form action="{{ route('account.updateProfile') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
             @method('PUT')
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-gray-600 font-medium">Nama Lengkap</label>
@@ -64,16 +72,15 @@
 
             <div>
                 <button type="submit"
-                        class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700 transition">
+                        class="border border-[#5E225E] bg-[#5E225E] text-white px-6 py-2 rounded hover:bg-white hover:text-[#5E225E] transition">
                     Simpan Perubahan
                 </button>
             </div>
         </form>
     </div>
 
-    {{-- RIWAYAT PENCARIAN --}}
     <div class="mt-8">
-        <h3 class="text-xl font-bold text-gray-800 mb-4">Riwayat Pencarian</h3>
+        <h1 class="text-xl font-bold text-gray-800 mb-4">Riwayat Pencarian</h1>
 
         @forelse ($searchHistories as $item)
             <div class="flex items-center justify-between bg-white px-4 py-3 rounded-xl shadow mb-3 hover:bg-gray-100 transition group">

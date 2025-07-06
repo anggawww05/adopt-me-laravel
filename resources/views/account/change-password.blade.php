@@ -16,31 +16,31 @@
     </div>
 @endif
 
-<form method="POST" action="{{ route('account.changePassword') }}" class="max-w-md space-y-6">
+<form method="POST" action="{{ route('account.changePassword') }}" class="max-w-6xl space-y-6">
     @csrf
     @method('PUT')
 
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Kata Sandi Lama</label>
+        <label class="block text-md font-medium text-gray-700 mb-1">Kata Sandi Lama</label>
         <input type="password" name="current_password" required
                class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300">
     </div>
 
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Kata Sandi Baru</label>
+        <label class="block text-md font-medium text-gray-700 mb-1">Kata Sandi Baru</label>
         <input type="password" name="new_password" required
                class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300">
     </div>
 
     <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Kata Sandi Baru</label>
+        <label class="block text-md font-medium text-gray-700 mb-1">Konfirmasi Kata Sandi Baru</label>
         <input type="password" name="new_password_confirmation" required
                class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300">
     </div>
 
     <div>
         <button type="submit"
-                class="bg-purple-400 hover:bg-purple-500 text-white px-6 py-2 rounded font-semibold transition">
+                class="border border-[#5E225E] bg-[#5E225E] text-white hover:bg-white hover:text-[#5E225E] px-6 py-2 rounded font-medium transition">
             Reset Sandi
         </button>
     </div>

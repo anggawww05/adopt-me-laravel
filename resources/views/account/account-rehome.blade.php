@@ -7,16 +7,14 @@
 @endphp
 
 @if (!request()->has('pet_id'))
-    {{-- Header + Tombol Tambah --}}
     <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">Hewan yang Anda Rehome</h2>
+        <h1 class="text-2xl font-bold text-gray-800">Hewan yang Anda Rehome</h1>
         <a href="{{ route('rehomer.form') }}"
-           class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded shadow text-sm">
+           class="border border-[#5E225E] bg-[#5E225E] text-white hover:bg-white hover:text-[#5E225E] px-4 py-2 rounded shadow text-sm">
             + Tambah Hewan
         </a>
     </div>
 
-    {{-- Grid Kartu --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($pets as $pet)
             <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col transform hover:-translate-y-1 transition-transform duration-300">
@@ -65,7 +63,6 @@
         @endforelse
     </div>
 @else
-    {{-- Halaman detail akan ditampilkan jika ada pet_id (sudah kamu buat sebelumnya) --}}
     @includeIf('account.rehome-detail', [
         'selectedPet' => $selectedPet,
         'adoptionRequests' => $adoptionRequests,

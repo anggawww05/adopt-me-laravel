@@ -37,7 +37,7 @@ class AccountController extends Controller
                     ->get();
                 break;
 
-            case 'rehome':
+            case 'account-rehome':
                 $viewData['pets'] = Pet::where('user_id', auth()->id())->get();
                 break;
 
@@ -54,6 +54,13 @@ class AccountController extends Controller
                             ->get();
                     }
                 }
+                break;
+
+            case 'account-adopt':
+                $viewData['adoptionHistories'] = AdoptionHistory::with('pet')
+                    ->where('user_id', auth()->id())
+                    ->orderByDesc('created_at')
+                    ->get();
                 break;
 
             case 'history':
@@ -144,6 +151,24 @@ class AccountController extends Controller
         }
 
         return view('account.review-adoption', compact('adoption'));
+    }
+
+    public function storeAppointment(Request $request, $id)
+    {
+        $request->validate([
+            'appointment_date' => 'required|date',
+            'appointment_time' => 'required',
+        ]);
+
+        $history = AdoptionHistory::where('id', $id)
+            ->where('user_id', auth()->id())
+            ->firstOrFail();
+
+        $history->appointment_date = $request->appointment_date;
+        $history->appointment_time = $request->appointment_time;
+        $history->save();
+
+        return back()->with('success', 'Janji temu berhasil dibuat.');
     }
 
     public function changePassword(Request $request)

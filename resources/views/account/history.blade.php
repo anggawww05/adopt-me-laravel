@@ -6,7 +6,7 @@
 
 <div class="bg-white rounded-xl shadow overflow-x-auto">
     <table class="min-w-full text-left text-sm">
-        <thead class="bg-gray-100 text-gray-700">
+        <thead class="bg-purple-50 text-gray-700">
             <tr>
                 <th class="px-4 py-3">Nama Hewan</th>
                 <th class="px-4 py-3">Pet ID</th>

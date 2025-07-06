@@ -32,8 +32,7 @@
                         <button class="border border-[#D678D6] text-[#D678D6] font-['Montserrat'] px-12 py-4 rounded-md hover:bg-purple-100 transition">
                             Rehome Sekarang
                         </button>
-                    </a>
-                    
+                    </a>  
                     
                 </div>
             </div>
@@ -84,93 +83,86 @@
         <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10">
 
             <div class="flex-1 text-center lg:text-left">
-                <h1 class="text-3xl font-bold leading-snug">
-                    Keharmonisan antara<br>
+                <h1 class="text-4xl font-bold leading-snug">Keharmonisan antara<br>
                     <span class="text-[#D678D6]">Manusia & Hewan</span>
                 </h1>
-                <img src="{{ asset('images/keharmonisan.png') }}" alt="Manusia dan Hewan"
-                    class="mx-auto lg:mx-0 mt-8 max-w-sm">
+                <img src="{{ asset('images/keharmonisan.png') }}" class="mx-auto lg:mx-0 mt-8 max-w-md">
             </div>
 
             <div class="flex-1 space-y-6">
-                <div class="p-5 border border-gray-200 rounded-xl shadow-sm bg-white flex items-start gap-4">
-                    <div class="text-pink-400 text-2xl">🐾</div>
-                    <div>
-                        <h1 class="font-semibold text-lg text-gray-800">Saling Memberi dan Menerima Kasih Sayang</h1>
-                        <p class="text-gray-600 text-sm mt-1">
-                            Hewan peliharaan memberikan cinta tanpa syarat, sementara manusia memberi perawatan, dan
-                            rasa aman, dan perhatian.
-                        </p>
+                <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-white">
+                    <div class="flex items-center gap-2">
+                        <img src="{{ asset('images/icon_landing1.png') }}" class="w-8 h-8 object-contain">
+                        <h1 class="font-semibold text-lg text-emerald-900">Saling Memberi dan Menerima Kasih Sayang</h1>
                     </div>
+                    <p class="text-gray-800 text-sm my-4">
+                        Hewan peliharaan memberikan cinta tanpa syarat, sementara manusia memberi perawatan, dan
+                        rasa aman, dan perhatian.
+                    </p>
+                    <img src="{{ asset('images/icon_landing2.png') }}" class="w-10 h-10 object-contain">
                 </div>
 
-                <div class="p-5 border border-gray-200 rounded-xl shadow-sm bg-white flex items-start gap-4">
-                    <div class="text-purple-400 text-2xl">🐾</div>
-                    <div>
-                        <h1 class="font-semibold text-lg text-gray-800">Kerja Sama dalam Kehidupan Sehari-hari</h1>
-                        <p class="text-gray-600 text-sm mt-1">
-                            Manusia menyediakan kebutuhan dasar hewan, sedangkan hewan bisa menjadi teman, penjaga, atau
-                            bahkan penyembuh stres secara alami.
-                        </p>
+                <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-white">
+                    <div class="flex items-center gap-2">
+                        <img src="{{ asset('images/icon_landing1.png') }}" class="w-8 h-8 object-contain">
+                        <h1 class="font-semibold text-lg text-emerald-900">Saling Memberi dan Menerima Kasih Sayang</h1>
                     </div>
+                    <p class="text-gray-800 text-sm my-4">
+                        Hewan peliharaan memberikan cinta tanpa syarat, sementara manusia memberi perawatan, dan
+                        rasa aman, dan perhatian.
+                    </p>
+                    <img src="{{ asset('images/icon_landing3.png') }}" class="w-10 h-10 object-contain">
                 </div>
 
-                <div class="p-5 border border-gray-200 rounded-xl shadow-sm bg-white flex items-start gap-4">
-                    <div class="text-blue-400 text-2xl">🌲</div>
-                    <div>
-                        <h1 class="font-semibold text-lg text-gray-800">Keharmonisan Kehidupan dan Alam</h1>
-                        <p class="text-gray-600 text-sm mt-1">
-                            Keharmonisan muncul saat manusia menyadari bahwa hewan juga makhluk hidup yang layak
-                            dihargai, dan dilindungi.
-                        </p>
+                <div class="p-6 border border-gray-200 rounded-xl shadow-sm bg-white">
+                    <div class="flex items-center gap-2">
+                        <img src="{{ asset('images/icon_landing1.png') }}" class="w-8 h-8 object-contain">
+                        <h1 class="font-semibold text-lg text-emerald-900">Saling Memberi dan Menerima Kasih Sayang</h1>
                     </div>
+                    <p class="text-gray-800 text-sm my-4">
+                        Hewan peliharaan memberikan cinta tanpa syarat, sementara manusia memberi perawatan, dan
+                        rasa aman, dan perhatian.
+                    </p>
+                    <img src="{{ asset('images/icon_landing4.png') }}" class="w-10 h-10 object-contain">
                 </div>
-
             </div>
+
         </div>
     </section>
 
     <section class="py-16 px-6 bg-white">
         <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-2xl md:text-3xl font-semibold text-gray-900">
-                Adopt atau Rehome hewan peliharaan dengan
-            </h2>
+            <h1 class="text-2xl md:text-3xl font-semibold text-gray-900">Adopt atau Rehome hewan peliharaan dengan</h1>
             <p class="text-green-600 mt-2 font-medium text-lg">3 Langkah Mudah</p>
 
-            <!-- Langkah-langkah -->
             <div class="mt-12 flex flex-col md:flex-row justify-between items-center gap-8 relative">
 
-                <!-- Garis putus-putus -->
                 <div
-                    class="hidden md:block absolute top-1/2 left-0 right-0 border-t-2 border-dashed border-[#FDC8FD] z-0">
+                    class="hidden md:block absolute top-1/2 left-0 right-0 border-t-2 border-dashed border-[#5E225E] z-0">
                 </div>
 
-                <!-- Step 1 -->
-                <div class="relative z-10 bg-white rounded-xl p-6 border text-center w-full md:w-1/3">
+                <div class="relative z-10 bg-white rounded-xl p-6 border border-gray-200 shadow-sm text-center w-full md:w-1/3">
                     <div
-                        class="w-10 h-10 mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
+                        class="w-15 h-15 mx-auto mb-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
                         1</div>
-                    <div class="text-purple-700 text-4xl mb-3">👤➕</div>
-                    <p class="text-gray-700 font-medium">Atur profil anda (termasuk foto) dalam hitungan menit</p>
+                    <img src="{{ asset('images/step1_landing.png') }}" class="w-20 h-20 object-contain mx-auto mb-8">
+                    <p class="text-gray-700 font-medium mb-4">Atur profil anda (termasuk foto) dalam hitungan menit</p>
                 </div>
 
-                <!-- Step 2 -->
-                <div class="relative z-10 bg-white rounded-xl p-6 border text-center w-full md:w-1/3">
+                <div class="relative z-10 bg-white rounded-xl p-6 border border-gray-200 shadow-sm text-center w-full md:w-1/3">
                     <div
-                        class="w-10 h-10 mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
+                        class="w-15 h-15 mx-auto mb-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
                         2</div>
-                    <div class="text-purple-700 text-4xl mb-3">🏠</div>
-                    <p class="text-gray-700 font-medium">Deskripsikan rumah dan rutinitas anda, agar rehomers dapat
-                        melihat kesesuaiannya.</p>
+                    <img src="{{ asset('images/step2_landing.png') }}" class="w-20 h-20 object-contain mx-auto mb-8">
+                    <p class="text-gray-700 font-medium mb-4">Deskripsikan rumah dan rutinitas anda, agar rehomers dapat melihat kesesuaiannya.</p>
                 </div>
 
-                <!-- Step 3 -->
-                <div class="relative z-10 bg-white rounded-xl p-6 border text-center w-full md:w-1/3">
+                <div class="relative z-10 bg-white rounded-xl p-6 border border-gray-200 shadow-sm text-center w-full md:w-1/3">
                     <div
-                        class="w-10 h-10 mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
+                        class="w-15 h-15 mx-auto mb-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
                         3</div>
-                    <div class="text-purple-700 text-4xl mb-3">🔍📋</div>
-                    <p class="text-gray-700 font-medium">Mulai pencarian anda!</p>
+                    <img src="{{ asset('images/step3_landing.png') }}" class="w-20 h-20 object-contain mx-auto mb-8">
+                    <p class="text-gray-700 font-medium mb-4">Mulai pencarian anda!</p>
                 </div>
 
             </div>
@@ -179,36 +171,29 @@
 
     <section class="py-16 px-6 bg-white">
         <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-10">
-                Frequently Asked Questions
-            </h2>
+            <h1 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-14">Frequently Asked Questions</h1>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                <!-- FAQ Adopters -->
-                <a href="/faq-adopt" class="p-8 border rounded-xl text-center shadow-sm hover:shadow-md transition">
-                    <div class="text-purple-700 text-5xl mb-4">💬</div>
-                    <h3 class="text-purple-800 font-semibold text-lg mb-2">
+                <a href="/faq-adopt" class="p-8 border border-gray-200 rounded-xl text-center shadow-sm hover:shadow-md transition">
+                    <img src="{{ asset('images/icon_faq.png') }}" class="w-20 h-20 object-contain mx-auto mb-2">
+                    <h1 class="text-gray-900 font-semibold text-lg mb-10">
                         FAQ's untuk Adopters
-                    </h3>
+                    </h1>
                     <p class="text-gray-600">
                         Apabila anda ingin mengadopsi hewan peliharaan, pasti ada banyak hal yang perlu dipastikan.
                         Klik bagian ini untuk melihat pertanyaan-pertanyaan yang sering ditanyakan.
                     </p>
                 </a>
 
-                <!-- FAQ Rehomers -->
-                <a href="/faq-rehome" class="p-8 border rounded-xl text-center shadow-sm hover:shadow-md transition">
-                    <div class="text-purple-700 text-5xl mb-4">💬</div>
-                    <h3 class="text-purple-800 font-semibold text-lg mb-2">
-                        FAQ's untuk Rehomers
-                    </h3>
-                    <p class="text-gray-600">
-                        Menemukan rumah baru untuk seekor hewan peliharaan tidak perlu menjadi tugas yang menakutkan.
-                    </p>
+                <a href="/faq-rehome" class="p-8 border border-gray-200 rounded-xl text-center shadow-sm hover:shadow-md transition">
+                    <img src="{{ asset('images/icon_faq.png') }}" class="w-20 h-20 object-contain mx-auto mb-2">
+                    <h1 class="text-gray-900 font-semibold text-lg mb-10">FAQ's untuk Rehomers</h1>
+                    <p class="text-gray-600">Menemukan rumah baru untuk seekor hewan peliharaan tidak perlu menjadi tugas yang menakutkan.</p>
                 </a>
 
             </div>
+
         </div>
     </section>
 </x-layout>
