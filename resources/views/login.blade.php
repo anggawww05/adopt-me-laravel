@@ -5,6 +5,11 @@
             <!-- Right Side: Register Form -->
             <div class="w-1/2 p-8">
                 <h1 class="text-lg font-bold mb-4 text-center">Masuk akun anda!</h1>
+                @if (session('status'))
+                    <div class="mb-4 font-medium text-sm text-green-600 bg-green-100 p-3 rounded-lg">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('login.authenticate') }}">
                     @csrf
                     <div class="mb-3">
@@ -24,7 +29,13 @@
                         <label for="terms" class="text-xs text-gray-600">Saya menyetujui <a href="#" class="text-blue-500 underline">Terms & Conditions</a></label>
                     </div> --}}
                     <button type="submit" class="w-full bg-purple-400 text-white py-2 rounded hover:bg-purple-800 mb-3">Login</button>
+                    
                 </form>
+                <div class="my-4 text-center">
+                        <a href="{{ route('google.redirect') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                            Sign in with Google
+                        </a>
+                    </div>
                 <div class="text-center text-xs text-gray-500">
                     Belum punya akun? <a href="{{ route('register') }}" class="text-blue-500 underline">Register</a>
                 </div>

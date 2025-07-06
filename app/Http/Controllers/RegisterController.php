@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Auth;
 class RegisterController extends Controller
 {
     public function view()
@@ -15,20 +15,25 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        $role = 1;
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
         ]);
-        // dd($request->all());
 
-        User::create([
-            'role_id' => $role,
+        // The try/catch block is no longer needed for debugging this issue.
+        $user = User::create([
+            'role_id' => 1,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return redirect('/login');
+
+        $user->sendEmailVerificationNotification();
+
+        // Add this line to log the user out before redirecting
+        Auth::logout();
+
+        return redirect('/login')->with('status', 'Registration successful! A verification link has been sent to your email.');
     }
 }
