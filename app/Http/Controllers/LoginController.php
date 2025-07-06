@@ -28,13 +28,21 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            if (Auth::user()->role_id == 1) {
-                return redirect()->intended('/');
+
+            // ## This is the corrected logic ##
+            // Check if the logged-in user's role permission is 'Admin'
+            if (Auth::user()->role->permission === 'Admin') {
+                // If yes, redirect to the admin dashboard route
+                return redirect()->route('admin.dashboard');
             }
-            return redirect()->intended('/');
+
+            // For all other roles, redirect to the main landing page
+            return redirect()->intended(route('landing'));
         }
 
-        return redirect()->back()->with('error', 'Data yang dimasukkan tidak sesuai/tidak terdaftar.');
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     public function logout(Request $request)

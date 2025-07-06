@@ -52,8 +52,8 @@ Route::get('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'vie
 Route::post('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'updatePost'])->name('admin.postingan.view.post');
 Route::put('/admin/postingan/{id}', [AdminController::class, 'deletePost'])->name('admin.postingan.delete');
 Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
-// Route::middleware(['auth', 'permission:Admin'])->group(function () {
-// });
+//Route::middleware(['auth', 'permission:Admin'])->group(function () {
+//});
 
 
 Route::middleware(['auth'])->group(function () {
@@ -74,5 +74,15 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/adoption/accept/{id}', [AccountController::class, 'accept'])->name('adoption.accept');
     Route::put('/adoption/reject/{id}', [AccountController::class, 'reject'])->name('adoption.reject');
     Route::get('/adoption/review/{id}', [AccountController::class, 'review'])->name('adoption.review');
+});
+
+Route::middleware(['auth', 'permission:Admin'])->group(function () {
+    Route::get('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan');
+    Route::post('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan.search');
+    Route::get('/admin/postingan/view-postingan/{id}', [AdminController::class, 'viewdetailPost'])->name('admin.postingan.view');
+    Route::get('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'vieweditPost'])->name('admin.postingan.view.edit');
+    Route::post('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'updatePost'])->name('admin.postingan.view.post');
+    Route::put('/admin/postingan/{id}', [AdminController::class, 'deletePost'])->name('admin.postingan.delete');
+    Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });
 
