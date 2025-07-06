@@ -2,7 +2,6 @@
 
 @section('container')
     <div class="ml-64 p-6 bg-gray-50 min-h-screen">
-        <!-- Header Section -->
         <div class="mb-8">
             <div class="flex items-center justify-between">
                 <div>
@@ -22,7 +21,6 @@
             </div>
         </div>
 
-        <!-- Search and Filter Section -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 mb-6 p-6">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
                 <div class="flex-1 max-w-md">
@@ -39,20 +37,10 @@
                         </div>
                     </form>
                 </div>
-                {{-- <div class="flex space-x-3">
-                    <select
-                        class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
-                        <option>Semua Role</option>
-                        <option>Admin</option>
-                        <option>User</option>
-                    </select>
-                </div> --}}
             </div>
         </div>
 
-        <!-- Table Section -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <!-- Table Header with Stats -->
             <div class="px-6 py-4 border-b border-gray-200">
                 <div class="flex items-center justify-between">
                     <h3 class="text-lg font-semibold text-gray-900">Daftar Pengguna</h3>
@@ -62,7 +50,6 @@
                 </div>
             </div>
 
-            <!-- Table -->
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
@@ -106,11 +93,10 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- {{ $pets->links('components.pagination')}} --}}
+                {{ $users->links('components.pagination')}}
             </div>
         </div>
     </div>
 
-    <!-- Alpine.js untuk dropdown -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 @endsection

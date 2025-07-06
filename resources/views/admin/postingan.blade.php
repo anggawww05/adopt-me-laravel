@@ -16,7 +16,7 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 mb-6 p-6">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
                 <div class="flex-1 max-w-md">
-                    <form action="#" method="POST">
+                    <form action="{{ route('admin.postingan.search') }}" method="POST">
                         @csrf
                         <div class="relative">
                             <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" fill="none"
@@ -99,7 +99,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- {{ $users->links('components.pagination')}} --}}
+                {{ $pets->links('components.pagination')}}
             </div>
         </div>
     </div>

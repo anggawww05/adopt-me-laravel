@@ -46,6 +46,7 @@ Route::put('/admin/pengguna/{id}', [AdminController::class, 'deleteUser'])->name
 
 #curd postingan
 Route::get('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan');
+Route::post('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan.search');
 Route::get('/admin/postingan/view-postingan/{id}', [AdminController::class, 'viewdetailPost'])->name('admin.postingan.view');
 Route::get('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'vieweditPost'])->name('admin.postingan.view.edit');
 Route::post('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'updatePost'])->name('admin.postingan.view.post');

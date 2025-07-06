@@ -51,7 +51,7 @@ class AdminController extends Controller
     // Simpan pengguna baru
     public function storeUser(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name'            => 'required|string|max:255',
             'email'           => 'required|email|unique:users,email',
             'password'        => 'required|string|min:6|confirmed',
@@ -61,18 +61,24 @@ class AdminController extends Controller
             'role_id'         => 'required|exists:roles,id',
         ]);
 
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->role_id = $request->role_id;
+
         if ($request->hasFile('picture_profile')) {
             $file = $request->file('picture_profile');
             $filename = time() . '_' . $file->getClientOriginalName();
             $path = $file->storeAs('profile_pictures', $filename, 'public');
-            $validated['picture_profile'] = $path;
+            $user->picture_profile = $path;
         }
 
-        $validated['password'] = bcrypt($validated['password']);
+        $user->save();
 
-        User::create($validated);
-
-        return redirect()->route('admin.users')->with('success', 'Pengguna berhasil ditambahkan');
+        return redirect()->route('admin.pengguna')->with('success', 'Pengguna berhasil ditambahkan');
     }
 
     // Tampilkan detail pengguna
@@ -129,9 +135,14 @@ class AdminController extends Controller
     }
 
     //postingan
-    public function indexPosts()
+    public function indexPosts(Request $request)
     {
-        $pets = Pet::all();
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $pets = Pet::where('name', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            $pets = Pet::paginate(10);
+        }
         return view('admin.postingan', compact('pets'));
     }
 
