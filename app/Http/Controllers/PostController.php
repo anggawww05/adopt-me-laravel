@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pet; // <-- Import the Pet model
 use App\Models\SearchHistory; // <-- 1. Import SearchHistory model
+use App\Models\AdoptionHistory; // <-- Import AdoptionHistory model
 use Illuminate\Support\Facades\Auth; // <-- 2. Import Auth facade
 
 class PostController extends Controller
