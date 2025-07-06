@@ -79,4 +79,3 @@ Route::middleware(['auth', 'permission:Admin'])->group(function () {
     Route::put('/admin/postingan/{id}', [AdminController::class, 'deletePost'])->name('admin.postingan.delete');
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });
-
