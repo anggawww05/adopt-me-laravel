@@ -27,10 +27,6 @@
                     <div class="mb-3">
                         <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Konfirmasi Password" class="w-full border px-3 py-2 rounded text-sm">
                     </div>
-                    <div class="flex items-center mb-4">
-                        <input type="checkbox" id="terms" required class="mr-2">
-                        <label for="terms" class="text-xs text-gray-600">Saya menyetujui <a href="#" class="text-blue-500 underline">Terms & Conditions</a></label>
-                    </div>
                     <button type="submit" class="w-full bg-purple-400 text-white py-2 rounded hover:bg-purple-800 mb-3">Buat Akun</button>
                 </form>
                 <div class="text-center text-xs text-gray-500">
