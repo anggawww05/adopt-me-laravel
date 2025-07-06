@@ -76,22 +76,25 @@
         <h3 class="text-xl font-bold text-gray-800 mb-4">Riwayat Pencarian</h3>
 
         @forelse ($searchHistories as $item)
-            <div class="bg-gray-50 p-4 rounded shadow mb-3 relative">
-                <form action="{{ route('searchHistory.destroy', $item->id) }}" method="POST" class="absolute top-2 right-2">
+            <div class="flex items-center justify-between bg-white px-4 py-3 rounded-xl shadow mb-3 hover:bg-gray-100 transition group">
+                <div class="flex flex-wrap gap-x-4 text-sm text-gray-700">
+                    <span><strong>Jenis:</strong> {{ ucfirst($item->species) }}</span>
+                    <span><strong>Ukuran:</strong> {{ ucfirst($item->size ?? '-') }}</span>
+                    <span><strong>Umur:</strong> {{ $item->estimated_minimum_age }} - {{ $item->estimated_maximum_age }} th</span>
+                    <span><strong>Gender:</strong> {{ ucfirst($item->gender) }}</span>
+                    <span><strong>Warna:</strong> {{ $item->color }}</span>
+                    <span><strong>Lokasi:</strong> {{ $item->location }}</span>
+                    <span><strong>Breed:</strong> {{ $item->breed }}</span>
+                </div>
+
+                <form action="{{ route('searchHistory.destroy', $item->id) }}" method="POST" class="ml-4">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" onclick="return confirm('Yakin ingin menghapus riwayat ini?')"
-                            class="text-red-600 hover:underline text-sm">
-                        Hapus
+                    <button type="submit"
+                            class="text-red-500 hover:text-red-700 transition text-sm font-semibold">
+                        ✕
                     </button>
                 </form>
-
-                <p><strong>Jenis:</strong> {{ ucfirst($item->species) }}</p>
-                <p><strong>Lokasi:</strong> {{ $item->location }}</p>
-                <p><strong>Umur:</strong> {{ $item->estimated_minimum_age }} - {{ $item->estimated_maximum_age }} tahun</p>
-                <p><strong>Warna:</strong> {{ $item->color }}</p>
-                <p><strong>Gender:</strong> {{ ucfirst($item->gender) }}</p>
-                <p class="text-sm text-gray-500">Dicari pada {{ $item->created_at->format('d M Y, H:i') }}</p>
             </div>
         @empty
             <p class="text-gray-600">Belum ada riwayat pencarian.</p>

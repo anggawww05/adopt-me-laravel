@@ -6,16 +6,17 @@
     <title>{{ $title ?? 'Adopt Me!' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.2" defer></script>
 </head>
 
-<body class="font-[Montserrat] bg-gray-50 text-gray-800">
+<body class="font-[Montserrat] bg-white text-gray-800">
     <header class="bg-white shadow-sm sticky top-0 z-50 font-primary">
         <nav class="container mx-auto px-20 py-6 flex justify-between items-center">
             <img src="{{ asset('images/adoptme_logo.png') }}" alt="Adopt Me Logo" class="h-12 xs:h-2 md:h-14 lg:h-16">
 
             <ul class="flex items-center space-x-12 text-black text-md font-medium">
                 <li><a href="/" class="hover:text-[#5E225E] hover:underline transition">Home</a></li>
-                <li><a href="adopt/post-adopt" class="hover:text-[#5E225E] hover:underline transition">Adopt</a></li>
+                <li><a href="/adopt/post-adopt" class="hover:text-[#5E225E] hover:underline transition">Adopt</a></li>
                 <li><a href="/rehomer/formulir" class="hover:text-[#5E225E] hover:underline transition">Rehome</a></li>
                 <li><a href="/tentang-kami" class="hover:text-[#5E225E] hover:underline transition duration-200">Tentang Kami</a></li>
             </ul>
@@ -81,7 +82,7 @@
                     <div>
                         <h1 class="text-base lg:text-lg font-semibold text-gray-800 mb-4">Butuh bantuan?</h1>
                         <ul class="space-y-3">
-                            <li><a href="adopt/post-adopt" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Adopt a pet</a></li>
+                            <li><a href="/adopt/post-adopt" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Adopt a pet</a></li>
                             <li><a href="/rehomer/formulir" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Rehome a pet</a></li>
                             <li><a href="/faq-adopt" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Adopt FAQ's</a></li>
                             <li><a href="/faq-rehome" class="text-sm lg:text-base text-[#5E225E] hover:text-[#D678D6] hover:underline transition">Rehome FAQ's</a></li>

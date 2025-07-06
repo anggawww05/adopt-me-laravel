@@ -67,10 +67,15 @@
                 </div>
                 <div class="flex-1 flex justify-end">
                     <div class="border rounded-xl p-6 bg-white shadow-md flex flex-col items-center justify-center w-full md:w-96">
-                        <p class="text-gray-700 mb-4 text-center">Apakah anda tertarik untuk adopsi?</p>
-                        <a href="{{ route('adoption.form', $pet) }}" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-8 rounded-lg shadow transition duration-200">
-                            Adopsi Sekarang!
-                        </a>
+                        @if(Auth::check() && Auth::id() == $pet->user_id)
+                            <p class="text-gray-700 font-semibold text-center">Ini adalah hewan peliharaan Anda.</p>
+                            <span class="text-sm text-gray-500 mt-2 text-center">Anda tidak bisa mengadopsi hewan Anda sendiri.</span>
+                        @else
+                            <p class="text-gray-700 mb-4 text-center">Apakah anda tertarik untuk adopsi?</p>
+                            <a href="{{ route('adoption.form', $pet) }}" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-8 rounded-lg shadow transition duration-200">
+                                Adopsi Sekarang!
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
