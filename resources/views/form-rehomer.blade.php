@@ -97,7 +97,8 @@
                 @endif
                 <div x-show="currentStep === 1" class="text-center">
                     <img src="{{ Auth::user()->picture_profile ? asset('storage/' . Auth::user()->picture_profile) : asset('images/default_profile.jpg') }}"
-                        alt="Profile" class="w-24 h-24 rounded-full mx-auto mb-4">
+                        alt="Profile"
+                        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover object-center aspect-square">
                     <p class="font-semibold">Email/Username: {{ Auth::user()->email }}</p>
                     <p class="font-semibold">Nama: {{ Auth::user()->name }}</p>
                     <div class="mt-6">
