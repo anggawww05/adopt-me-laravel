@@ -10,6 +10,13 @@
                         {{ session('status') }}
                     </div>
                 @endif
+                @if ($errors->any())
+                    <div class="mb-4 font-medium text-sm text-red-600 bg-red-100 p-3 rounded-lg">
+                        @foreach ($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('login.authenticate') }}">
                     @csrf
                     <div class="mb-3">
@@ -17,14 +24,14 @@
                     </div>
                     <div class="mb-3 relative">
                         <input type="password" id="password" name="password" required placeholder="Password" class="w-full border px-3 py-2 rounded text-sm pr-10">
-                        
+
                     </div>
                     {{-- <div class="flex items-center mb-4">
                         <input type="checkbox" id="terms" required class="mr-2">
                         <label for="terms" class="text-xs text-gray-600">Saya menyetujui <a href="#" class="text-blue-500 underline">Terms & Conditions</a></label>
                     </div> --}}
                     <button type="submit" class="w-full bg-purple-400 text-white py-2 rounded hover:bg-purple-800 mb-3">Login</button>
-                    
+
                 </form>
                 <div class="my-4 text-center">
                         <a href="{{ route('google.redirect') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">

@@ -23,7 +23,7 @@ class LoginController extends Controller
             ],
             [
                 'email.required' => 'Email tidak boleh kosong.',
-                'email.email' => 'Email tidak valid.',
+                'email.email' => 'Format email tidak valid.',
                 'password.required' => 'Password tidak boleh kosong.',
             ]
         );
@@ -31,19 +31,18 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // ## This is the corrected logic ##
-            // Check if the logged-in user's role permission is 'Admin'
+            // Cek apakah user adalah Admin
             if (Auth::user()->role->permission === 'Admin') {
-                // If yes, redirect to the admin dashboard route
                 return redirect()->route('admin.dashboard');
             }
 
-            // For all other roles, redirect to the main landing page
+            // Redirect ke landing page untuk role lain
             return redirect()->intended(route('landing'));
         }
 
+        // Pesan error jika login gagal
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Email atau password salah. ',
         ])->onlyInput('email');
     }
 
@@ -63,11 +62,13 @@ class LoginController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
+
+
     public function handleGoogleCallback()
     {
         try {
             // Keep the dd() for now to see what happens
-            
+
             // Add ->with(['verify' => false]) to bypass the SSL check
             $googleUser = Socialite::driver('google')->with(['verify' => false])->user();
 
@@ -86,7 +87,7 @@ class LoginController extends Controller
 
         } catch (\Exception $e) {
             // We are keeping this to see if a *new* error appears
-            dd($e); 
+            dd($e);
         }
     }
 }
