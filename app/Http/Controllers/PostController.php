@@ -4,12 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pet; // <-- Import the Pet model
+use App\Models\SearchHistory; // <-- 1. Import SearchHistory model
+use Illuminate\Support\Facades\Auth; // <-- 2. Import Auth facade
 
 class PostController extends Controller
 {
     // Updated method to handle searching and filtering
     public function indexAdopt(Request $request)
     {
+        // ### START: Save Search History Logic ###
+        // Check if the user is logged in and if any search parameters were sent
+        if (Auth::check() && $request->hasAny(['q', 'species', 'city', 'gender', 'age', 'size', 'breed'])) {
+            
+            // Create a record in the search_historys table
+            SearchHistory::create([
+                'user_id' => Auth::id(),
+                'keyword' => $request->input('q') ?? null, // <-- Add this line
+                'species' => $request->input('species'),
+                'location' => $request->input('city'), // Map 'city' from form to 'location' in DB
+                'gender' => $request->input('gender'),
+                'breed' => $request->input('breed'),
+                'age' => $request->input('age'), // This assumes you changed the column to VARCHAR
+                
+                // Set default/null values for fields not in your search form
+                'estimated_minimum_age' => 0,
+                'estimated_maximum_age' => 0,
+                'elements' => '',
+                'color' => '',
+            ]);
+        }
+        // ### END: Save Search History Logic ###
         // Start a new query on the Pet model
         $query = Pet::query();
 

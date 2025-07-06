@@ -11,6 +11,7 @@ class SearchHistory extends Model
     protected $fillable = [
         'species',
         'location',
+        'keyword',
         'estimated_minimum_age',
         'estimated_maximum_age',
         'age',

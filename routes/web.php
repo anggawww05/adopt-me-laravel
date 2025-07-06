@@ -27,7 +27,7 @@ Route::get('/', function () {
 Route::get('/faq-adopt', [FAQController::class, 'adopter_view'])->name('faqAdopt.view');
 Route::get('/faq-rehome', [FAQController::class, 'rehomer_view'])->name('faqRehome.view');
 Route::get('/tentang-kami', [TentangKamiController::class, 'view'])->name('tentangKami.view');
-Route::delete('/search-history/{id}', [AccountController::class, 'deleteSearchHistory'])->name('searchHistory.destroy');
+
 // routes/web.php
 Route::get('/auth/google/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.callback');
@@ -54,7 +54,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
+    Route::delete('/search-history/{id}', [AccountController::class, 'deleteSearchHistory'])->name('searchHistory.destroy');
     //rehome
     Route::get('/rehomer/formulir', [RehomerController::class, 'create'])->name('rehomer.form');
     Route::post('/rehomer/formulir', [RehomerController::class, 'store'])->name('rehomer.store');
