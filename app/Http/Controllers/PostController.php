@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pet; // <-- Import the Pet model
 use App\Models\SearchHistory; // <-- 1. Import SearchHistory model
+use App\Models\AdoptionHistory; // <-- Import AdoptionHistory model
 use Illuminate\Support\Facades\Auth; // <-- 2. Import Auth facade
 
 class PostController extends Controller
@@ -12,6 +13,14 @@ class PostController extends Controller
     // Updated method to handle searching and filtering
     public function indexAdopt(Request $request)
     {
+        // 2. Get an array of pet IDs that have an 'accepted' adoption status.
+        $acceptedPetIds = AdoptionHistory::where('status', 'accepted')->pluck('pet_id')->unique();
+
+        // Start a new query on the Pet model
+        $query = Pet::query();
+
+        // 3. Exclude the pets that have been accepted.
+        $query->whereNotIn('id', $acceptedPetIds);
         // ### START: Save Search History Logic ###
         // Check if the user is logged in and if any search parameters were sent
         if (Auth::check() && $request->hasAny(['q', 'species', 'city', 'gender', 'age', 'size', 'breed'])) {

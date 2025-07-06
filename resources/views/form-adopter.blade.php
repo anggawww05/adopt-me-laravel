@@ -73,11 +73,11 @@
                     <div></div>
                     <div>
                         <label for="phone" class="block text-sm font-medium text-gray-700">Nomor Telepon</label>
-                        <input type="tel" name="phone" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                        <input type="tel" name="phone" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500"  required>
                     </div>
                     <div>
                         <label for="home_phone" class="block text-sm font-medium text-gray-700">Telepon Rumah</label>
-                        <input type="tel" name="home_phone" id="home_phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500">
+                        <input type="tel" name="home_phone" id="home_phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500" required>
                     </div>
                 </div>
 
@@ -115,9 +115,9 @@
                 </div>
 
                 <div x-show="currentStep === 4" class="text-center">
-                    <p class="text-sm text-gray-600 mb-4">Harap tambahkan 4 foto rumah Anda dan area luar rumah karena ini akan membantu pemilik hewan peliharaan saat ini untuk membuat keputusan. (Minimal 2 foto diperlukan, tetapi lebih baik jika mengunggah 4 foto)</p>
+                    <p class="text-sm text-gray-600 mb-4">Harap tambahkan 4 foto rumah Anda dan area luar rumah karena ini akan membantu pemilik hewan peliharaan saat ini untuk membuat keputusan. (Minimal 1 foto diperlukan, tetapi lebih baik jika mengunggah 4 foto)</p>
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="file" name="home_photo_1" class="border p-2 rounded">
+                        <input type="file" name="home_photo_1" class="border p-2 rounded" required>
                         <input type="file" name="home_photo_2" class="border p-2 rounded">
                         <input type="file" name="home_photo_3" class="border p-2 rounded">
                         <input type="file" name="home_photo_4" class="border p-2 rounded">

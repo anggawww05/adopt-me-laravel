@@ -67,6 +67,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/account', [AccountController::class, 'index'])->name('account');
     Route::put('/account/update-profile', [AccountController::class, 'updateProfile'])->name('account.updateProfile');
     Route::put('/account/change-password', [AccountController::class, 'changePassword'])->name('account.changePassword');
+    Route::post('/account/adopt/appointment/{id}', [AccountController::class, 'storeAppointment'])->name('account.appointment.store');
     Route::put('/adoption/accept/{id}', [AccountController::class, 'accept'])->name('adoption.accept');
     Route::put('/adoption/reject/{id}', [AccountController::class, 'reject'])->name('adoption.reject');
     Route::get('/adoption/review/{id}', [AccountController::class, 'review'])->name('adoption.review');
