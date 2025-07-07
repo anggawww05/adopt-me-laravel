@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Auth\EmailVerificationRequest; // <-- Add this line
-use Illuminate\Http\Request; // <-- This should already be here
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisterController;
@@ -13,6 +13,7 @@ use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RehomerController;
 use App\Models\Pet;
+
 Route::get('/register', [RegisterController::class, 'view'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 Route::get('/login', [LoginController::class, 'view'])->name('login');
@@ -71,6 +72,8 @@ Route::middleware(['auth', 'verified', 'permission:User'])->group(function () {
     Route::put('/adoption/accept/{id}', [AccountController::class, 'accept'])->name('adoption.accept');
     Route::put('/adoption/reject/{id}', [AccountController::class, 'reject'])->name('adoption.reject');
     Route::get('/adoption/review/{id}', [AccountController::class, 'review'])->name('adoption.review');
+    Route::put('/pet/{id}/adopted', [AccountController::class, 'markAsAdopted'])->name('pet.adopted');
+    Route::put('/pet/{id}/not-adopted', [AccountController::class, 'markAsRejected'])->name('pet.rejected');
 });
 
 Route::middleware(['auth', 'permission:Admin'])->group(function () {

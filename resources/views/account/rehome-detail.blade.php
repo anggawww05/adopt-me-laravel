@@ -80,9 +80,9 @@
                                     </form>
                                 </div>
                             @elseif ($request->status === 'accepted')
-                                <span class="bg-green-100 text-green-700 px-3 py-1 text-xs rounded">Diterima</span>
+                                <span class="bg-green-100 text-green-700 px-2 py-1 text-xs rounded">✅ Diterima</span>
                             @elseif ($request->status === 'rejected')
-                                <span class="bg-red-100 text-red-700 px-3 py-1 text-xs rounded">Ditolak</span>
+                                <span class="bg-red-100 text-red-700 px-2 py-1 text-xs rounded">❌ Ditolak</span>
                             @endif
 
                             @if ($request->appointment_date && $request->appointment_time)
@@ -91,6 +91,29 @@
                                         {{ \Carbon\Carbon::parse($request->appointment_time)->format('H:i') }}
                                 </div>
                             @endif
+
+                            @if ($request->appointment_date && $request->appointment_time && $request->status === 'accepted' && $selectedPet->status !== 'adopted')
+                                <div class="mt-4 flex gap-2 flex-wrap">
+                                    <form action="{{ route('pet.adopted', $selectedPet->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+
+                                        <button type="submit" class="bg-green-100 hover:bg-green-200 text-green-700 text-xs font-medium px-2 py-1 rounded">
+                                            ✅ Sudah Diadopsi
+                                        </button>
+                                    </form>
+
+                                    <form action="{{ route('pet.rejected', $selectedPet->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                    
+                                        <button type="submit" class="bg-red-100 hover:bg-red-200 text-red-700 text-xs font-medium px-2 py-1 rounded">
+                                            ❌ Tidak Diadopsi
+                                        </button>
+                                    </form>
+                                </div>
+                            @endif
+
                         </td>
                     </tr>
                 @empty
@@ -100,6 +123,7 @@
                 @endforelse
             </tbody>
         </table>
+
     </div>
 
     {{-- Modal --}}

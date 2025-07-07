@@ -171,6 +171,38 @@ class AccountController extends Controller
         return back()->with('success', 'Janji temu berhasil dibuat.');
     }
 
+        public function markAsAdopted($id)
+    {
+        $pet = Pet::findOrFail($id);
+
+        if ($pet->user_id !== auth()->id()) {
+            abort(403, 'Anda tidak diizinkan melakukan aksi ini.');
+        }
+
+        $pet->status = 'adopted';
+        $pet->save();
+
+        return back()->with('success', 'Status hewan telah diperbarui menjadi diadopsi.');
+    }
+
+    public function markAsRejected($id)
+    {
+        $pet = Pet::findOrFail($id);
+
+        if ($pet->user_id !== auth()->id()) {
+            abort(403, 'Anda tidak diizinkan.');
+        }
+
+        $pet->status = 'available';
+        $pet->save();
+
+        AdoptionHistory::where('pet_id', $pet->id)
+            ->where('status', 'accepted')
+            ->update(['status' => 'rejected']);
+
+        return back()->with('success', 'Status hewan dikembalikan menjadi tersedia.');
+    }
+
     public function changePassword(Request $request)
     {
         $request->validate([
