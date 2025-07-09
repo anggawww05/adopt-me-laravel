@@ -102,26 +102,26 @@ Route::middleware(['auth', 'permission:User'])->group(function () {
 
 
 
-// Route::middleware(['auth', 'permission:Admin'])->group(function () {
-//     #dashboard
-//     Route::get('/admin/dashboard', [AdminController::class, 'indexDashboard'])->name('admin.dashboard');
+Route::middleware(['auth', 'permission:Admin'])->group(function () {
+    #dashboard
+    Route::get('/admin/dashboard', [AdminController::class, 'indexDashboard'])->name('admin.dashboard');
 
-//     #curd pengguna
-//     Route::get('/admin/pengguna', [AdminController::class, 'indexUsers'])->name('admin.pengguna');
-//     Route::post('/admin/pengguna', [AdminController::class, 'indexUsers'])->name('admin.pengguna.search');
-//     Route::get('/admin/pengguna/tambah', [AdminController::class, 'createUser'])->name('admin.pengguna.create');
-//     Route::post('/admin/pengguna/tambah', [AdminController::class, 'storeUser'])->name('admin.pengguna.store');
-//     Route::get('/admin/pengguna/view-pengguna/{id}', [AdminController::class, 'showUser'])->name('admin.pengguna.view');
-//     Route::get('/admin/pengguna/edit-pengguna/{id}', [AdminController::class, 'indexeditUser'])->name('admin.pengguna.edit');
-//     Route::post('/admin/pengguna/edit-pengguna/{id}', [AdminController::class, 'updateUser'])->name('admin.pengguna.edit.post');
-//     Route::put('/admin/pengguna/{id}', [AdminController::class, 'deleteUser'])->name('admin.pengguna.delete');
+    #curd pengguna
+    Route::get('/admin/pengguna', [AdminController::class, 'indexUsers'])->name('admin.pengguna');
+    Route::post('/admin/pengguna', [AdminController::class, 'indexUsers'])->name('admin.pengguna.search');
+    Route::get('/admin/pengguna/tambah', [AdminController::class, 'createUser'])->name('admin.pengguna.create');
+    Route::post('/admin/pengguna/tambah', [AdminController::class, 'storeUser'])->name('admin.pengguna.store');
+    Route::get('/admin/pengguna/view-pengguna/{id}', [AdminController::class, 'showUser'])->name('admin.pengguna.view');
+    Route::get('/admin/pengguna/edit-pengguna/{id}', [AdminController::class, 'indexeditUser'])->name('admin.pengguna.edit');
+    Route::post('/admin/pengguna/edit-pengguna/{id}', [AdminController::class, 'updateUser'])->name('admin.pengguna.edit.post');
+    Route::put('/admin/pengguna/{id}/toggle-status', [AdminController::class, 'toggleStatusUser'])->name('admin.pengguna.toggleStatus');
 
-//     #curd postingan
-//     Route::get('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan');
-//     Route::post('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan.search');
-//     Route::get('/admin/postingan/view-postingan/{id}', [AdminController::class, 'viewdetailPost'])->name('admin.postingan.view');
-//     Route::get('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'vieweditPost'])->name('admin.postingan.view.edit');
-//     Route::post('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'updatePost'])->name('admin.postingan.view.post');
-//     Route::put('/admin/postingan/{id}', [AdminController::class, 'deletePost'])->name('admin.postingan.delete');
-//     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
-// });
+    #curd postingan
+    Route::get('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan');
+    Route::post('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan.search');
+    Route::get('/admin/postingan/view-postingan/{id}', [AdminController::class, 'viewdetailPost'])->name('admin.postingan.view');
+    Route::get('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'vieweditPost'])->name('admin.postingan.view.edit');
+    Route::post('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'updatePost'])->name('admin.postingan.view.post');
+    Route::put('/admin/postingan/{id}', [AdminController::class, 'deletePost'])->name('admin.postingan.delete');
+    Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+});

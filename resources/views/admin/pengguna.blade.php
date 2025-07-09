@@ -27,8 +27,8 @@
                     <form action="{{ route('admin.pengguna.search') }}" method="POST">
                         @csrf
                         <div class="relative">
-                            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
@@ -61,6 +61,10 @@
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama
                             </th>
                             <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status
+                            </th>
+                            <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role
                             </th>
                             <th scope="col"
@@ -73,6 +77,13 @@
                             <tr class="hover:bg-gray-50 transition-colors duration-200">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $user->id }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $user->name }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    @if ($user->status === 'active')
+                                        Aktif
+                                    @elseif ($user->status === 'nonactive')
+                                        Tidak Aktif
+                                    @endif
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $user->role->permission }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm">
@@ -81,7 +92,17 @@
                                     @if ($user->role->permission !== 'Admin')
                                         <a href="{{ route('admin.pengguna.edit', $user->id) }}"
                                             class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition">Edit</a>
-                                        <form action="{{ route('admin.pengguna.delete', $user->id) }}" method="POST"
+                                        <form action="{{ route('admin.pengguna.toggleStatus', $user->id) }}" method="POST"
+                                            style="display:inline;"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin {{ $user->status === 'active' ? 'menonaktifkan' : 'mengaktifkan' }} pengguna ini?');">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit"
+                                                class="{{ $user->status === 'active' ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700' }} text-white px-3 py-1 rounded transition">
+                                                {{ $user->status === 'active' ? 'Nonaktifkan' : 'Aktifkan' }}
+                                            </button>
+                                        </form>
+                                        {{-- <form action="{{ route('admin.pengguna.delete', $user->id) }}" method="POST"
                                             style="display:inline;"
                                             onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');">
                                             @csrf
@@ -89,14 +110,14 @@
                                             <button type="submit"
                                                 class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition">Hapus
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     @endif
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{ $users->links('components.pagination')}}
+                {{ $users->links('components.pagination') }}
             </div>
         </div>
     </div>

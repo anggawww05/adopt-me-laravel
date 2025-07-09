@@ -184,10 +184,10 @@ class AdminController extends Controller
         for ($i = 1; $i <= 4; $i++) {
             $pictureField = 'picture' . $i;
             if ($request->hasFile($pictureField)) {
-            $file = $request->file($pictureField);
-            $filename = time() . "_$i." . $file->getClientOriginalExtension();
-            $path = $file->storeAs('pet_pictures', $filename, 'public');
-            $pet->$pictureField = $path;
+                $file = $request->file($pictureField);
+                $filename = time() . "_$i." . $file->getClientOriginalExtension();
+                $path = $file->storeAs('pet_pictures', $filename, 'public');
+                $pet->$pictureField = $path;
             }
         }
 
@@ -220,18 +220,26 @@ class AdminController extends Controller
         return redirect()->route('admin.postingan')->with('success', 'Postingan berhasil diupdate');
     }
 
-    public function deletePost($id)
-    {
-        $pet = Pet::findOrFail($id);
-        $pet->delete();
-        return redirect()->route('admin.postingan')->with('success', 'Postingan berhasil dihapus');
-    }
-
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function toggleStatusUser($id)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->status === 'active') {
+            $user->status = 'nonactive';
+        } else {
+            $user->status = 'active';
+        }
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Status pengguna berhasil diperbarui.');
     }
 }

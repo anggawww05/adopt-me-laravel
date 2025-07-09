@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+
 class LoginController extends Controller
 {
     public function view()
@@ -31,9 +32,16 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Cek apakah user adalah Admin
-            if (Auth::user()->role->permission === 'Admin') {
-                return redirect()->route('admin.dashboard');
+            // Ambil user dengan relasi role
+            $user = User::with('role')->find(Auth::id());
+            if ($user) {
+                $user->status = 'active';
+                $user->save();
+
+                // Cek apakah admin
+                if ($user->role && $user->role->permission === 'Admin') {
+                    return redirect()->route('admin.dashboard');
+                }
             }
 
             // Redirect ke landing page untuk role lain
@@ -42,7 +50,7 @@ class LoginController extends Controller
 
         // Pesan error jika login gagal
         return back()->withErrors([
-            'email' => 'Email atau password salah. ',
+            'email' => 'Email atau password salah.',
         ])->onlyInput('email');
     }
 
@@ -84,7 +92,6 @@ class LoginController extends Controller
             Auth::login($user);
 
             return redirect()->intended(route('landing'));
-
         } catch (\Exception $e) {
             // We are keeping this to see if a *new* error appears
             dd($e);

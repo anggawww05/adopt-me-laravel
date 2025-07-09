@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->text('picture_profile')->nullable();
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
+            $table->enum('status', ['active', 'nonactive'])->default('active');
             $table->rememberToken();
             $table->timestamps();
         });
