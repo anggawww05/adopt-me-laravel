@@ -23,7 +23,7 @@ class RegisterController extends Controller
 
         // The try/catch block is no longer needed for debugging this issue.
         $user = User::create([
-            'role_id' => 2,
+            'role_id' => 1,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
