@@ -35,6 +35,14 @@ class LoginController extends Controller
             // Ambil user dengan relasi role
             $user = User::with('role')->find(Auth::id());
             if ($user) {
+                // Cek status user
+                if ($user->status === 'nonactive') {
+                    Auth::logout();
+                    return redirect()->route('login')->withErrors([
+                        'email' => 'Akun anda tidak aktif.',
+                    ])->onlyInput('email');
+                }
+
                 $user->status = 'active';
                 $user->save();
 
