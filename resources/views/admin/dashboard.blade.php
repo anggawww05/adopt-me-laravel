@@ -26,10 +26,6 @@
                         <span class="text-2xl font-bold text-purple-600">{{ $adoptedPets }}</span>
                         <span class="text-gray-700 mt-2">Adopted Pets</span>
                     </div>
-                    <div class="bg-white rounded-lg shadow p-6 flex flex-col items-center">
-                        <span class="text-2xl font-bold text-pink-600">{{ $rehomedPets }}</span>
-                        <span class="text-gray-700 mt-2">Rehomed Pets</span>
-                    </div>
                 </div>
             </div>
         </div>

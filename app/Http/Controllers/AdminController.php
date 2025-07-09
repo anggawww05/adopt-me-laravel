@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    //index dashboard
     public function indexDashboard()
     {
         $users = User::count();
@@ -27,7 +26,6 @@ class AdminController extends Controller
         ));
     }
 
-    //index tabel pengguna
     public function indexUsers(Request $request)
     {
         if ($request->has('search')) {
@@ -41,14 +39,12 @@ class AdminController extends Controller
         return view('admin.pengguna', compact('users'));
     }
 
-    // Tampilkan form tambah pengguna
     public function createUser()
     {
         $roles = Role::all();
         return view('admin.tambah-pengguna', compact('roles'));
     }
 
-    // Simpan pengguna baru
     public function storeUser(Request $request)
     {
         $request->validate([
@@ -81,7 +77,6 @@ class AdminController extends Controller
         return redirect()->route('admin.pengguna')->with('success', 'Pengguna berhasil ditambahkan');
     }
 
-    // Tampilkan detail pengguna
     public function showUser($id)
     {
         $user = User::findOrFail($id);
@@ -95,7 +90,6 @@ class AdminController extends Controller
         return view('admin.edit-pengguna', compact('user', 'roles'));
     }
 
-    // Tampilkan form edit pengguna
     public function updateUser(Request $request, string $id)
     {
         $user = User::findOrFail($id);
@@ -134,7 +128,6 @@ class AdminController extends Controller
         return redirect()->route('admin.pengguna')->with('success', 'Pengguna berhasil dihapus');
     }
 
-    //postingan
     public function indexPosts(Request $request)
     {
         if ($request->has('search')) {
@@ -188,7 +181,6 @@ class AdminController extends Controller
             'picture4'           => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Handle picture uploads
         for ($i = 1; $i <= 4; $i++) {
             $pictureField = 'picture' . $i;
             if ($request->hasFile($pictureField)) {

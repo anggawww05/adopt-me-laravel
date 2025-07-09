@@ -78,16 +78,19 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm">
                                     <a href="{{ route('admin.pengguna.view', $user->id) }}"
                                         class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition">Detail</a>
-                                    <a href="{{ route('admin.pengguna.edit', $user->id) }}"
-                                        class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition">Edit</a>
-                                    <form action="{{ route('admin.pengguna.delete', $user->id) }}" method="POST"
-                                        style="display:inline;"
-                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit"
-                                            class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition">Hapus</button>
-                                    </form>
+                                    @if ($user->role->permission !== 'Admin')
+                                        <a href="{{ route('admin.pengguna.edit', $user->id) }}"
+                                            class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition">Edit</a>
+                                        <form action="{{ route('admin.pengguna.delete', $user->id) }}" method="POST"
+                                            style="display:inline;"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?');">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit"
+                                                class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition">Hapus
+                                            </button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
