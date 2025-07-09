@@ -13,6 +13,9 @@ class AdoptionController extends Controller
     // The create method now receives the Pet object
     public function create(Pet $pet): View
     {
+        if ($pet->status !== 'available') {
+            abort(403, 'Hewan ini tidak tersedia untuk diadopsi.');
+        }
         // Pass the pet to the view
         return view('form-adopter', ['pet' => $pet]);
     }
@@ -20,6 +23,7 @@ class AdoptionController extends Controller
     // The store method also receives the Pet object
     public function store(Request $request, Pet $pet)
     {
+        if ($pet->status !== 'available') {}
         // 1. Validate all form data, including the photos
         $validatedData = $request->validate([
             'address' => 'required|string|max:255',

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Auth\EmailVerificationRequest; // <-- Add this line
-use Illuminate\Http\Request; // <-- This should already be here
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisterController;
@@ -53,7 +53,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 //});
 
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'permission:User'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::delete('/search-history/{id}', [AccountController::class, 'deleteSearchHistory'])->name('searchHistory.destroy');
     //rehome
@@ -72,30 +72,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/adoption/accept/{id}', [AccountController::class, 'accept'])->name('adoption.accept');
     Route::put('/adoption/reject/{id}', [AccountController::class, 'reject'])->name('adoption.reject');
     Route::get('/adoption/review/{id}', [AccountController::class, 'review'])->name('adoption.review');
-});
-
-Route::middleware(['auth', 'permission:Admin'])->group(function () {
-    #dashboard
-    Route::get('/admin/dashboard', [AdminController::class, 'indexDashboard'])->name('admin.dashboard');
-
-    #curd pengguna
-    Route::get('/admin/pengguna', [AdminController::class, 'indexUsers'])->name('admin.pengguna');
-    Route::post('/admin/pengguna', [AdminController::class, 'indexUsers'])->name('admin.pengguna.search');
-    Route::get('/admin/pengguna/tambah', [AdminController::class, 'createUser'])->name('admin.pengguna.create');
-    Route::post('/admin/pengguna/tambah', [AdminController::class, 'storeUser'])->name('admin.pengguna.store');
-    Route::get('/admin/pengguna/view-pengguna/{id}', [AdminController::class, 'showUser'])->name('admin.pengguna.view');
-    Route::get('/admin/pengguna/edit-pengguna/{id}', [AdminController::class, 'indexeditUser'])->name('admin.pengguna.edit');
-    Route::post('/admin/pengguna/edit-pengguna/{id}', [AdminController::class, 'updateUser'])->name('admin.pengguna.edit.post');
-    Route::put('/admin/pengguna/{id}', [AdminController::class, 'deleteUser'])->name('admin.pengguna.delete');
-
-    #curd postingan
-    Route::get('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan');
-    Route::post('/admin/postingan', [AdminController::class, 'indexPosts'])->name('admin.postingan.search');
-    Route::get('/admin/postingan/view-postingan/{id}', [AdminController::class, 'viewdetailPost'])->name('admin.postingan.view');
-    Route::get('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'vieweditPost'])->name('admin.postingan.view.edit');
-    Route::post('/admin/postingan/edit-postingan/{id}', [AdminController::class, 'updatePost'])->name('admin.postingan.view.post');
-    Route::put('/admin/postingan/{id}', [AdminController::class, 'deletePost'])->name('admin.postingan.delete');
-    Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::put('/pet/{id}/adopted', [AccountController::class, 'markAsAdopted'])->name('pet.adopted');
+    Route::put('/pet/{id}/not-adopted', [AccountController::class, 'markAsRejected'])->name('pet.rejected');
 });
 
 Route::middleware(['auth', 'permission:User'])->group(function () {
